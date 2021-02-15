@@ -1,0 +1,766 @@
+/* ---------------------------------------------------------- GENERAL */
+        
+        button
+        {
+            border: none;
+            outline: none !important;
+        }
+        
+        a
+        {
+            color: #000;
+        }
+        
+        a:hover
+        {
+            text-decoration: none !important;
+        }
+        
+        ul
+        {
+            display: flex;
+            list-style: none;
+            margin: 0;
+        }
+        
+        .flex-center
+        {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .flex-column
+        {
+            flex-direction: column;
+        }
+    
+        html
+        {
+            background: #fafafa;
+            cursor: default;
+        }
+
+        
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ LANDING PAGE ~~~~~~~~~~~~~~~ */
+
+
+/* ---------------------------------------------------------- MAIN CONTAINER LANDING PAGE */
+        
+        .main-cont-lp
+        {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        
+/* ---------------------------------------------------------- CIRCLE & FOOD PNG */     
+        
+        .circle
+        {
+            position: absolute;
+            top: 50%;
+            transform: translate(-45%, -50%);
+            height: 105vh;
+            width: 60%;
+            max-width: 118vw;
+            border-radius: 50%;
+            background: #E7B74A;
+        }
+        
+        .food-shadow
+        {
+            position: absolute;
+            top: 50%;
+            right: -25%;
+            transform: translateY(-50%);
+            width: 70%;
+            z-index: 2;
+        }
+        
+        .circle:before,
+        .food-shadow:before
+        {
+            content: '';
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            border-radius: 50%;
+            box-shadow: 0 0 5px rgba(0,0,0,.2);
+        }
+        
+        .food-shadow:before
+        {
+            box-shadow: 0 0 15px 10px rgba(0,0,0,.5);
+            width: 83.8%;
+            height: 83.8%;
+            transform: translate(10%, 10%);
+            z-index: -1;
+        }
+        
+        
+/* ---------------------------------------------------------- MAIN CONTENT LANDING PAGE */  
+        
+        .main-content
+        {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50vw;
+            height: 100vh;
+        }
+        
+        .content h3
+        {
+            font-size: 1.5em;
+        }
+        
+        /* Headline */
+        .main-content .content h1
+        {
+            font-weight: bolder;
+            font-size: 4.2em;
+/*
+            color: #000;
+            color: #212332;
+*/
+            color: #3B4351;
+            text-shadow: 2px 2px 3px rgba(0,0,0,.2);
+        }
+        
+        .subheadline
+        {
+            letter-spacing: .5em;
+            word-spacing: .5em;
+            margin: .8em 0;
+        }
+        
+        .content p
+        {
+            font-weight: 500;
+            margin-bottom: 1.8em;
+        }
+        
+        /* Content BUTTON */
+        .content button
+        {
+            position: relative;
+            padding: .5em 3.5em;
+            border-radius: 25px;
+            background: #E5B842;
+            color: #fff;
+            text-shadow: .5px .5px 5px rgba(0,0,0,.3);
+            font-size: 1.1em;
+            font-weight: 500;
+            transition: .3s;
+            box-shadow: 0px 2px 5px rgba(0,0,0,.2),
+                        0 0 0 .5px rgba(0,0,0,.2);
+        }
+        
+/* HOVER - Content Btn */
+        .content button:hover
+        {
+            color: #000;
+            background: #fff;
+        }
+        
+/* LINK - Content Btn */
+        .content button a
+        {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        
+/* LINK - To Profile */
+        .to-profile
+        {
+            position: relative;
+            margin-top: 1.5em;
+            width: 100%;
+            text-align: right;
+        }
+        
+        
+        .arrow-link
+        {
+            font-weight: bold;
+            font-size: 1.1em;
+            cursor: pointer;
+            transform: translateY(2.5em);
+        }
+        
+        
+        
+/* Social Media Icons */
+        .social-icons
+        {
+            position: absolute;
+            bottom: 80px;
+            right: 10%;
+        }
+        
+        .social-icons i
+        {
+            margin-left: 1.3em;
+            font-size: 1.25em;
+            text-shadow: 1px 1px 3px rgba(0,0,0,.2);
+            transition: .2s;
+        }
+        
+/* HOVER - Social Media Icons */
+        .social-icons i:hover
+        {
+            transform: scale(1.05);
+        }    
+        
+        
+/* ---------------------------------------------------------- MEDIA QUERIES */
+        
+/* 1200px */
+        @media only screen and (max-width: 1200px)
+        {
+            .content
+            {
+                font-size: .9em;
+            }
+        }
+        
+
+        @media only screen and (max-width: 1000px)
+        {
+            .content
+            {
+                font-size: .7em;
+            }
+        }
+        
+        
+/* 950px */
+        @media only screen and (max-width: 950px)
+        {
+            .navbar nav ul li
+            {
+                margin: 0 .5em;
+            }
+            
+            .navbar nav ul li a
+            {
+                font-size: .9em;
+            }
+            
+            .navbar nav ul li:last-child
+            {
+                margin-left: 0em;
+            }
+        }
+        
+        
+/* min 769px */
+        @media only screen and (min-width: 769px)
+        {
+            .only-visible-on-tablet
+            {
+                display: none;
+            }
+        }
+        
+                
+/* Tablet */
+        @media only screen and (max-width: 768px)
+        {
+            .not-visible-on-tablet
+            {
+                display: none;
+            }
+            
+            header
+            {
+                padding-top: 1em;
+            }
+            
+            .menu-btn
+            {
+                font-size: 2em;
+                transform: rotateX(180deg);
+            }
+            
+            .food-shadow
+            {
+                top: 75%;
+                left: 55%;
+                width: 90%;
+            }
+            
+            .main-content .content h1
+            {
+                font-size: 3em;
+            }
+            
+            .main-content .content h3
+            {
+                font-size: 1.3em;
+                word-spacing: .3em;
+            }
+            
+            .main-content .content
+            {
+                font-size: .8em;
+                transform: translate(-15%, -25%)
+            }
+            
+            .main-content .content p
+            {
+                font-size: small;
+            }
+            
+            .arrow-link
+            {
+                transform: translateY(3em);
+            }
+        }
+        
+        
+        /* Mobile */
+        @media only screen and (max-width: 600px) 
+        {
+            header
+            {
+                background: #E7B74A;
+                height: 60px;
+                padding-top: 0;
+            }
+            
+            .logo
+            {
+                font-size: 1em;
+            }
+            
+            .main-content
+            {
+                width: 100%;
+                transform: translateY(-3em);
+            }
+            
+            .main-cont-lp .circle
+            {
+                top: 60%;
+                left: 50%;
+                transform: rotate(90deg) translateX(-50%);
+            }
+            
+            .food-shadow
+            {
+                top: 75%;
+                left: -35%;
+                width: 80%;
+            }
+            
+            .main-cont-lp .content
+            {
+                font-size: .75em;
+                transform: translate(0);
+            }
+            
+            .main-content .content h1
+            {
+                font-size: 3em;
+            }
+            
+            .main-content .content h3
+            {
+                font-size: 1.1em;
+                word-spacing: .3em;
+            }
+            
+            .main-content .content p
+            {
+                font-size: small;
+            }
+            
+            .social-icons
+            {
+                bottom: 0;
+                font-size: .8em;
+            }
+            
+            .social-icons i
+            {
+                margin-left: 1em;
+            }
+            
+            .social-icons i:hover
+            {
+                color: #fff;
+                transform: scale(1.3);
+            }
+        }
+        
+        
+        /* Iphone 5se */
+        @media only screen and (max-width: 350px)
+        {
+            .mobile-navbar .logo
+            {
+                top: 1em;
+                left: 1em;
+                font-size: 1em;
+            }
+            
+            .content
+            {
+                transform: scale(.8);
+            }
+        }
+
+
+
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ALL RECIPES ~~~~~~~~~~~~~~~ */
+
+/* ---------------------------------------------------------- MAIN CONTAINER ALL RECIPES */
+        
+        .main-cont-all-recipes
+        {
+            background: #fafafa;
+        }
+        
+        
+/* Top Image */
+        .top-image img
+        {
+            width: 100%;
+            height: 15em;
+            object-fit: cover;
+            margin-top: 90px;
+        }
+        
+        
+/* ---------------------------------------------------------- ALL RECIPES CONTAINER */
+        
+        .all-recipes-cont 
+        {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            gap: .5em;
+            padding-bottom: 5em;
+        }
+        
+        
+        
+/* ---------------------------------------------------------- RECIPE CARD */
+        
+        .card
+        {
+            border: none;
+            background: #fafafa;
+            font-size: .9em;
+        }
+        
+        .card-body
+        {
+            padding: .5em .3em;
+        }
+        
+/* Recipe Card Image (Top Part) */
+        .card-img-top
+        {
+            border-radius: 10px
+        }
+     
+        .card-title
+        {
+            font-size: 1.1rem;
+            font-size: 1rem;
+        }
+        
+        
+/* Card Infos (Bottom Part) */
+        .card-infos
+        {
+            justify-content: space-between;
+        }
+        
+        .card-infos .card-rating img
+        {
+            width: 16px;
+            margin-right: 3px;
+        }
+        
+        .card-duration i
+        {
+            color: #348D9A;
+            font-size: 16px;
+            margin-right: 1px;
+        }
+        
+        .card-difficulty
+        {
+            font-size: smaller;
+            padding: .1em .5em;
+            border-radius: 10px;
+            border: solid 1px #348D9A;
+        }
+        
+        
+/* ---------------------------------------------------------- CATEGORIES / SEARCH / TAGS SECTION */
+        
+/* Headline for Categories & Tags */
+        .filter-headline
+        {
+            position: relative;
+            font-size: 1.5em;
+            text-align: center;
+            margin: 2em;
+            z-index: 2;
+            background: #fafafa;
+        }
+        
+/* Headline Lines */
+        .filter-headline:before
+        {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: 0%;
+            transform: translateY(-50%);
+            background: #000;
+            width: 40%;
+            height: 1px;
+            z-index: -1;
+        }
+        
+        .filter-headline:after
+        {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0%;
+            transform: translateY(-50%);
+            background: #000;
+            width: 40%;
+            height: 1px;
+            z-index: -1;
+        }
+        
+        
+/* ---------------------------------------------------------- CATEGORIES SECTION */
+        .categories-cont
+        {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+            gap: .5em;
+            height: 5em;
+            width: 90%;
+            margin: .5em auto 2.5em auto;
+        }
+        
+/* Category BUTTON */
+        .categories-cont .category
+        {
+            background: #E7B74A;
+            border-radius: 10px;
+            box-shadow: 0 0 1px rgba(0,0,0,.2);
+            cursor: pointer;
+            font-weight: bold;
+            letter-spacing: .05em;
+            transition: .2s;
+        }
+        
+/* HOVER - Category Btn */
+        .categories-cont .category:hover
+        {
+            background: #fafafa;
+            box-shadow: 0 0 0 2px #E7B74A;
+        }
+        
+/* Category Icon */
+        .category img
+        {
+            width: 34px;
+            margin-right: 5px;
+        }
+        
+        
+/* ---------------------------------------------------------- SEARCH SECTION (Input) */
+        .search-cont
+        {
+            width: 100%;
+            height: 2.5em;
+        }
+        
+        .search
+        {
+            position: relative;
+            height: 100%;
+            width: 25em;
+            box-shadow: 0 0 0 1px #000;
+            border-radius: 5px;
+        }
+        
+/* Search Icon */
+        .search img
+        {
+            position: absolute;
+            height: 1.5em;
+            width: 1.5em;
+            left: 46%;
+            left: 3%;
+            top: 50%;
+            z-index: 10;
+            transform: translateY(-50%);
+        }
+        
+        
+/* ---------------------------------------------------------- CATEGORY SECTION */
+        
+/* Toggle Categories / Toggle Tags BUTTON */
+        .toggle-categories-btn,
+        .toggle-tags-btn
+        {
+            position: absolute;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: .2s;
+        }
+        
+        .toggle-categories-btn
+        {
+            bottom: -25%;
+            right: 1.5%
+        }
+        
+        .toggle-tags-btn
+        {
+            top: -25%;
+            left: 1.5%
+        }
+        
+/* HOVER - Toggle Cat/Tags Btn */
+        .toggle-categories-btn:hover
+        {
+            color: #348D9A;
+            transform: translate(-3%);
+        }
+        
+        .toggle-tags-btn:hover
+        {
+            color: #348D9A;
+            transform: translate(3%);
+        }
+             
+        
+/* ---------------------------------------------------------- TAGS SECTION */
+        .categories-cont.hidden-categories-cont
+        {
+            margin-top: -1.8em;
+        }
+        
+        /* Hidden Tags Container */
+        .hidden-tags-cont
+        {
+            margin: 2.5em 0;
+            width: 90%;
+            margin: 2.5em auto -.5em auto;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        
+/* Tags BUTTONS */
+        .tag
+        {
+            border: solid 1px #348D9A;
+            margin: 5px 3px;
+            padding: .5em .6em;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: .2s;
+        }
+        
+/* HOVER - Tag Btns */
+        .tag:hover
+        {
+            background: #348D9A;
+            color: #fafafa;
+        }
+        
+        
+        /* ---------------------------------------------------------- MEDIA QUERIES */
+        
+        /* 1200px */
+        @media only screen and (max-width: 1200px)
+        {
+            .all-recipes-cont
+            {
+                grid-template-columns: 1fr 1fr 1fr;
+            }
+        }
+        
+        
+        /* 1000px */
+        @media only screen and (max-width: 1000px)
+        {
+            .all-recipes-cont
+            {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        
+
+        /* Tablet */
+        @media only screen and (max-width: 768px)
+        {
+            .not-visible-on-tablet
+            {
+                display: none;
+            }
+            
+            .filter-headline:before,
+            .filter-headline:after
+            {
+                width: 35%;
+            }
+        }
+        
+        
+        /* Mobile */
+        @media only screen and (max-width: 600px)
+        {
+            .all-recipes-cont
+            {
+                grid-template-columns: 1fr;
+            }
+            
+            .filter-headline:before,
+            .filter-headline:after
+            {
+                width: 25%;
+            }
+            
+            .category span
+            {
+                display: none;
+            }
+        }
+        
+        
+        /* Iphone 5se */
+        @media only screen and (max-width: 350px)
+        {
+            .all-recipes-cont
+            {
+                grid-template-columns: 1fr;
+            }
+        }
+    
+
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ MY PROFILE ~~~~~~~~~~~~~~~ */
+
