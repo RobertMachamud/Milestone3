@@ -424,6 +424,7 @@
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ALL RECIPES ~~~~~~~~~~~~~~~ */
 
+
 /* ---------------------------------------------------------- MAIN CONTAINER ALL RECIPES */
         
         .main-cont-all-recipes
@@ -762,5 +763,469 @@
     
 
 
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ CLICKED RECIPE ~~~~~~~~~~~~~~~ */
+
+
+/* ---------------------------------------------------------- MAIN CONTAINER CLICKED RECIPE */
+        
+        .main-cont-recipe
+        {
+            min-height: 100vh;
+            width: 100vw;
+            background: #fafafa;
+            padding-top: 150px;
+        }
+        
+        
+/* ---------------------------------------------------------- IMAGE CONTAINER */ 
+        
+        .recipe-img-cont
+        {
+            width: 65%;
+        }
+        
+        .recipe-img-cont img
+        {
+            object-fit: cover;
+            border-radius: 25px;
+            /* border-radius: 15px;*/
+            /* !!! */
+            box-shadow: 0 0 10px rgba(0,0,0,.3);
+        }
+        
+        
+ /* ---------------------------------------------------------- RECIPE TOP SECTION */      
+        
+        .recipe-top-section
+        {
+            align-items: flex-start;
+            flex-wrap: wrap;
+            position: relative;
+        }
+        
+        .recipe-info-cont
+        {
+            width: 40%;
+            width: 30%;
+            width: 35%;
+            height: 100%;
+            padding-right: 5em;
+        }
+        
+/* Recipe Name */
+        .recipe-name
+        {
+            color: #000;
+            font-size: 1.8em;
+            font-weight: 600;
+/*            font-weight: 700;*/
+/*            color: #3B4351;*/
+        }
+        
+/* Recipe Underline */
+        .underline-recipe
+        {
+            height: 2px;
+            width: 100%;
+            background: rgba(0,0,0,.5);
+            margin: 8% 0% 5% 0%;
+/*            margin: 6% 0% 5% 0%;*/
+        }
+        
+/* Username & Icon (below) */
+        .recipe-username
+        {
+            font-weight: 500;
+            color: #000;
+            font-size: 1.1em;
+            margin-bottom: 10%;
+        }
+        
+        .recipe-username i
+        {
+            margin: 0 5px;
+            font-size: 1.1em;
+            color: #348D9A;
+        }
+        
+        
+/* Recipe info Container */
+        .recipe-info-cont div.flex-center
+        {
+            position: relative;
+            justify-content: space-between;
+            font-size: 1.1em;
+            margin: 5% 0;
+        }
+        
+        
+/* Difficulty */
+        .recipe-info-cont div.flex-center span
+        {
+            position: absolute;
+            right: 5em;
+            font-size: .8em;
+            font-weight: 600;
+        }
+        
+/* Rating Number (how many ratings) */
+        .rating-nr
+        {
+            font-size: smaller;
+            font-weight: 600;
+            margin-bottom: -5%;
+        }
+                
+/* Recipe Difficulty */
+        .recipe-info-cont div.flex-center .card-difficulty
+        {
+            font-size: smaller;
+            padding: .1em .5em;
+            border-radius: 10px;
+            border: solid 2px #348D9A;
+            font-weight: 600;
+        }
+        
+        /* Rating Icons (png) */
+        .recipe-info-cont div.flex-center .card-rating img
+        {
+            width: 25px;
+            margin-right: 3px;
+        }
+        
+        /* Rating Duration */
+        .recipe-info-cont div.flex-center .card-duration
+        {
+            font-size: 1.1em;
+            font-weight: bolder;
+        }
+        
+        /* Recipe Duration Icon */
+        .recipe-info-cont div.flex-center .card-duration i
+        {
+            margin: 0 5px;
+            color: #348D9A;
+            font-size: 16px;
+            margin-right: 1px;
+        }
+        
+/* Favorite BUTTON */
+        .fav-recipe-btn
+        {
+            width: 3em;
+            height: 3em;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: .2s;
+        }
+        
+        /* Favorite Btn Icon */
+        .fav-recipe-btn i
+        {
+            transition: .2s;
+        }
+        
+/* HOVER - Favourite Btn */
+        .fav-recipe-btn:hover
+        {
+            background: lightgray;
+        }
+        
+/* HOVER - Favorite Btn */
+        .fav-recipe-btn:hover i
+        {
+            transform: scale(1.35);
+        }
+        
+/* Save Recipe BUTTON */
+        .save-recipe-btn
+        {
+            margin-top: 1em !important;
+            font-size: 1em;
+            font-weight: 600;
+            box-shadow: 0 0 0 2px rgba(0,0,0,.8);
+            border-radius: 5px;
+            padding: .8em;
+            cursor: pointer;
+            transition: .2s ease-in;
+        }
+        
+/* HOVER - Save Recipe Btn */
+        .save-recipe-btn:hover
+        {
+            color: #fafafa;
+            background: #348D9A;
+            box-shadow: 0 0 0 2px #000;
+        }
+        
+/* To My Recipes Link */
+        .link-my-recipes
+        {
+            font-weight: bolder;
+            font-size: .8em;
+            text-decoration: underline;
+        }
+           
+        
+/* ---------------------------------------------------------- RECIPE BOTTOM SECTION */
+        
+        .recipe-bottom-section
+        {
+            flex-wrap: wrap;
+            margin: 3em 0;
+            align-items: flex-start;
+        }
+        
+/* Ingredients Container */
+        .ingredients-cont
+        {
+            position: relative;
+            align-items: flex-start;
+            width: 35%;
+            margin-bottom: 2.5em;
+        }
+        
+/* For How Many Persons Container */
+        .amount-persons-cont
+        {
+            position: relative;
+            width: 80%;
+            padding: .5em 1em;
+            justify-content: space-between;
+            border: 2px solid;
+            border-radius: 5px;
+            margin-bottom: 5%;
+        }
+        
+/* Plus & Minus BUTTONS */
+        .amount-persons-cont .plus-btn,
+        .amount-persons-cont .minus-btn
+        {
+            cursor: pointer;
+            border-radius: 5px;
+            padding: .5em .8em;
+            transition: .2s ease-in;
+        }
+        
+/* HOVER - Plus & Minus Btn */
+        .amount-persons-cont .plus-btn:hover,
+        .amount-persons-cont .minus-btn:hover
+        {
+            background: lightgray;
+        }
+        
+        .amount-persons-cont .amount
+        {
+            font-weight: 600;
+            font-size: 1.1em;
+        }
+        
+        
+/* ---------------------------------------------------------- INSTRUCTIONS & INGREDIENT CONTAINER */
+        
+        .instructions-cont
+        {
+            width: 65%;
+/*            background: #E7B74A;*/
+/*            background: #348D9A;*/
+        }
+        
+        .instructions-cont > div
+        {
+            margin-top: -.5em;
+            padding: 1.5em;
+            padding-top: 2em;
+/*            border-radius: 15px;*/
+            border-radius: 25px;
+            border: solid 2px #348D9A;
+        }
+        
+        
+/* Instruction & Ingredient Headline */
+        .instructions-cont h5,
+        .ingredients-cont h5
+        {
+            font-size: 1.8em;
+            font-weight: 600;
+            margin-bottom: 1.5em;
+        }
+        
+        /* Ingredients */
+        .ingredient
+        {
+            font-weight: 600;
+            margin: .8em;
+            margin: .5em .8em;
+        }
+        
+/* Ingredient Icons */
+        .ingredient-icon
+        {
+            width: 25px;
+            width: 30px;
+            margin: 0 1em 0 .5em;
+        }
+    
+        
+        
+        
+/* ---------------------------------------------------------- MEDIA QUERIES */
+        
+/* 1000px - 1200px */
+        @media only screen and (max-width: 1200px) and (min-width: 1000px)
+        {
+            .recipe-info-cont
+            {
+                padding-right: 3em;
+                font-size: .9em;
+            }
+        }
+        
+        
+        
+/* 1000px */
+        @media only screen and (max-width: 1000px)
+        {
+            .profile-headline
+            {
+                margin-bottom: 2.5em;
+            }
+            
+            .recipe-info-cont,
+            .recipe-img-cont,
+            .ingredients-cont,
+            .instructions-cont
+            {
+                width: 100%;
+            }
+            
+            .recipe-top-section
+            {
+                justify-content: flex-start;
+            }
+            
+            .recipe-info-cont
+            {
+                margin-top: 1.5em;
+                order: 2;
+                width: 100%;
+                width: 90%;
+            }
+            
+            .amount-persons-cont
+            {
+                width: 100%;
+            }
+            
+            .ingredient
+            {
+                margin-left: 0;
+                justify-content: flex-start !important;
+            }
+            
+            .recipe-name
+            {
+                margin-bottom: -.5em;
+            }
+            
+            .recipe-username
+            {
+                margin-bottom: 1.5em;
+            }
+            
+            .rating-nr
+            {
+                margin-bottom: .5em;
+            }
+            
+            .recipe-info-cont div.flex-center
+            {
+                margin: .6em 0;
+            }
+        }
+        
+        
+        
+/* Mobile */
+        @media only screen and (max-width: 600px)
+        {
+            .main-cont-recipe
+            {
+                padding-top: 100px;
+            }
+            
+            .profile-headline h2
+            {
+                font-size: 1.5em;
+            }
+            
+            .profile-headline
+            {
+                margin-bottom: 1.5em;
+            }
+            
+            .recipe-info-cont
+            {
+                font-size: .8em;
+                width: 100%;
+                padding: 0 .5em;
+            }
+            
+            .recipe-name
+            {
+                font-size: 1.8em;
+            }
+            
+            .recipe-info-cont div.flex-center
+            {
+                margin: .6em 0;
+            }
+
+            .instructions-cont h5, .ingredients-cont h5
+            {
+                font-size: 1.5em;
+            }
+            
+            .recipe-info-cont div.flex-center .card-duration
+            {
+                font-weight: 600;
+            }
+            
+            .recipe-info-cont div.flex-center .card-rating img
+            {
+                width: 23px;
+            }
+        }
+        
+        
+/* Iphone 5se */
+        @media only screen and (max-width: 350px)
+        {
+            .profile-headline h2
+            {
+                font-size: 1.3em;
+            }
+            
+            .recipe-name
+            {
+                font-size: 1.5em;
+            }
+            
+            .recipe-info-cont
+            {
+                font-size: .8em;
+            }
+            
+            .recipe-info-cont div.flex-center .card-rating img
+            {
+                width: 20px;
+            }
+        }
+        
+
+
+
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ MY PROFILE ~~~~~~~~~~~~~~~ */
+
 
