@@ -17,7 +17,7 @@
 <body>
     
     <!-- Main Container Landing Page -->
-    <div class="main-cont-lp">
+    <div class="main-cont">
         <!-- Header -->
         <header>
             <div class="navbar not-visible-on-tablet">
@@ -34,10 +34,10 @@
                             <a href="{{ url_for('index') }}">Home</a>
                         </li>
                         <li>
-                            <a href="{{ url_for('index') }}">Recipe</a>
+                            <a href="{{ url_for('recipes') }}">Recipes</a>
                         </li>
                         <li>
-                            <a href="#">myRecipes</a>
+                            <a href="{{ url_for('index') }}">myRecipes</a>
                         </li>
                         <li>
                             <a href="{{ url_for('index') }}">myProfile</a>
@@ -92,13 +92,8 @@
             </div>
         </header>
 
-        <div class="main-cont">
-
             {% block content %}
             {% endblock %}
-
-        </div>
-        
 
     </div>
     

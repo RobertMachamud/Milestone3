@@ -199,6 +199,7 @@ backdrop-filter: blur( 13.0px );
             position: relative;
             width: 100vw;
             min-height: 100vh;
+            background: #fafafa;
         }
 
 

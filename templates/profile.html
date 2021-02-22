@@ -1,0 +1,669 @@
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdn.metroui.org.ua/v4/css/metro-all.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.1.1/css/hover-min.css" type="text/css" />
+    <script src="https://kit.fontawesome.com/7443d15568.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <title>RecipeShare</title>
+    
+    
+    <style>
+        
+        
+        
+        
+        button
+        {
+            border: none;
+            outline: none !important;
+        }
+        
+        a
+        {
+            color: #000;
+        }
+        
+        a:hover
+        {
+            text-decoration: none !important;
+        }
+        
+        ul
+        {
+            display: flex;
+            list-style: none;
+            margin: 0;
+        }
+        
+        header
+        {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 80px;
+            z-index: 999;
+        }
+        
+/* Logo */
+        .logo
+        {
+            z-index: 999;
+            font-size: 1.3em;
+            color: #fff;
+            padding-bottom: .2em;
+            font-weight: 600;
+            cursor: pointer;
+            text-shadow: 1px 1px 2px rgba(0,0,0,.8),
+                        0 0 .3px rgba(0,0,0,1);
+        }
+        
+        .logo i
+        {
+            margin-right: .5em;
+            color: #000
+        }
+        
+/* Mobile Logo */
+        .mobile-navbar .logo
+        {
+            position: absolute;
+            top: 1em;
+            left: 1.5em;
+        }
+        
+/* Navigation */
+        .menu-btn
+        {
+            position: absolute;
+            right: 1.5em;
+            top: .7em;
+            font-size: 1.3em;
+            cursor: pointer;
+        }
+        
+        .navbar
+        {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            padding: 0 3%;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+        
+        .navbar nav ul li
+        {
+            margin-left: 2em;
+            cursor: pointer;
+        }
+        
+        .navbar nav ul li a
+        {
+            color: #000;
+            font-weight: 500;
+            text-shadow: 1px 1px 3px rgba(0,0,0,.2);
+        }
+        
+        .navbar .fa-align-left
+        {
+            font-size: 1.5em;
+            transform: rotateX(180deg);
+            margin-left: 1em;
+        }
+        
+        
+/*        Mobile Navigation */
+        .mobile-navs
+        {
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            transform: translateX(100vw);
+            height: 90vh;
+            width: 100vw;
+            background: #fafafa;
+            transition: .2s ease-out;
+        }
+        
+/* Open Mobile Navbar */
+        .mobile-navs.open
+        {
+            transform: translateX(0);
+        }
+        
+/* Mobile Nav Links */
+        .mobile-navs nav ul li
+        {
+            margin: 1em 0;
+            padding: .3em;
+        }
+        
+        .mobile-navs nav ul li a
+        {
+            margin: 1em 0;
+            color: #000;
+            font-size: 1.3em;
+            font-weight: bolder;
+            text-shadow: 1px 1px 5px rgba(0,0,0,.2);
+        }
+ 
+        
+        .flex-center
+        {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .flex-column
+        {
+            flex-direction: column;
+        }
+        
+        
+        
+        
+        
+        
+        
+    
+        .main-cont-profile
+        {
+            width: 100vw;
+            height: 100vh;
+            background: #fafafa;
+/*            padding-top: 80px;*/
+/*            padding-top: 0px;*/
+        }
+        
+        .profile-headline
+        {
+            position: relative;
+            width: 90%;
+            margin-top: -2em;
+            margin-bottom: 5em;
+        }
+        
+        .profile-headline h2
+        {
+            background: #fafafa;
+            padding: 0 1em;
+            white-space: nowrap;
+            z-index: 3;
+        }
+        
+        .profile-headline .headline-line
+        {
+            width: 45%;
+            height: 2px;
+            background: #333
+        }
+        
+        .profile-cont
+        {
+/*            background: #999;*/
+            width: 80%;
+            width: 75%;
+            box-shadow: .5px .5px 5px rgba(0,0,0,.4),
+                        0 -.3px 0px rgba(0,0,0,.4);
+/*
+            border-top: 5px #333 solid;
+            border-top: 4px #333 solid;
+*/
+            background: #eee;
+            z-index: 10;
+        }
+        
+        .profile-top-section
+        {
+            background: #E7B74A;
+/*            background: #348D9A;*/
+            width: 100%;
+            box-shadow: 0 .5px 5px rgba(0,0,0,.4);
+        }
+        
+        
+        
+        .profile-img
+        {
+            margin: 1.5em 0 .5em 0;
+        }
+        
+        .profile-img img
+        {
+            width: 8em;
+            height: 8em;
+            object-fit: cover;
+            border-radius: 50%;
+            box-shadow: 1px 1px 10px rgba(0,0,0,.5);
+        }
+        
+/* Username */
+        .username
+        {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #000;
+            margin-bottom: 1.5em;
+        }
+        
+        
+        
+        .profile-top-info
+        {
+            width: 75%;
+            justify-content: space-between;
+            color: #000;
+            font-weight: 600;
+            text-shadow: .5px .5px 2px rgba(0,0,0,.2);
+            margin-bottom: 1.5em;
+        }
+/*        same padding here - about me*/
+        
+        
+        .bottom-section
+        {
+/*            background: #555;*/
+        }
+     
+        .profile-content
+        {
+            width: 75%;
+            height: 12em;
+            flex-wrap: wrap;
+/*            background: #eee;*/
+        }
+        
+        .data-box,
+        .about-cont
+        {
+            height: 100%;
+            padding-top: 2em;
+            padding-left: .5em;
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-start;
+            flex-direction: column;
+        }
+        
+        .line
+        {
+            height: 2px;
+            margin-left: .5em;
+            background: rgba(0,0,0,.8);
+/*            width: 70%; */
+/*            width: 20%; */
+        }
+        
+        .line.profile-data
+        {
+            width: 40%;
+        }
+        
+        .about-cont
+        {
+            width: 70%;
+            padding-right: 5%;
+/*            background: #eee;*/
+        }
+        
+        .about-headline
+        {
+            padding: 0 .5em;
+            width: 100%;
+            margin-bottom: 1.5em;
+            justify-content: flex-start;
+            display: grid;
+            grid-template-columns: 2fr 8fr;
+        }
+        
+        .about-headline .fas
+        {
+            position: relative;
+            margin-right: .5em;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: .8em;
+            border-radius: 50%;
+            box-shadow: 0 0 0 2px rgba(0,0,0,.8);
+        }
+        
+        .about-headline.profile-data
+        {
+            grid-template-columns: 2fr 2fr;
+        }
+        
+        
+        .about-headline h5
+        {
+            font-size: .9em;
+            white-space: nowrap;
+        }
+        
+        .about-cont p
+        {
+            padding-left: 1em;
+/*            padding-left: .5em;*/
+        }
+        
+        
+        .data-box
+        {
+            width: 30%;
+/*            background: lightblue;*/
+            
+        }
+        
+        .user-data-cont
+        {
+            width: 100%;
+            background: #333;
+            color:#fafafa;
+/*            padding: .2em;*/
+        }
+        
+        
+        
+        .profile-nav-cards-cont
+        {
+            width: 75%;
+/*            background: #525252;*/
+            margin-top: 1em;
+            justify-content: space-between;
+            
+/*
+            height: 5em;
+            overflow: hidden;
+*/
+        }
+        
+        .profile-nav-card
+        {
+            width: 30%;
+            height: 2.5em;
+            transition: .3s;
+            cursor: pointer;
+            background: #E5B842;
+            background: #348D9A;
+/*            background: #ffdc6e;*/
+            border-radius: 25px 25px 0 0;
+        }
+        
+        .profile-nav-card:hover
+        {
+            transform: translateY(-.3em) scale(1.1);
+        }
+        
+        
+        
+        
+        
+        
+        
+        
+        .bottom
+        {
+            position: absolute;
+            bottom: 0%;
+            width: 100vw;
+/*            background: #E7B74A;*/
+            background: #E5B842;
+/*            background: #348D9A;*/
+            height: 80px;
+/*            border-top: solid;*/
+            box-shadow: 0 0px 3px rgba(0,0,0,.3);
+            z-index: 1;
+        }
+        
+        .bottom-icons-cont
+        {
+            position: relative;
+            width: 75%;
+/*            width: 35em;*/
+            height: 100%;
+            justify-content: space-between;
+            margin: 0 auto;
+        }
+        
+        .bottom-icons-cont img
+        {
+            width: 30px;
+            
+        }
+        
+        
+        
+        
+        
+        
+        
+        @media only screen and (min-height: 700px)
+        {
+/*
+            .bottom
+            {
+                display: block !important;
+            }
+*/
+        }
+        
+        
+        @media only screen and (max-width: 1200px)
+        {
+            .profile-cont
+            {
+                width: 90%;
+            }
+        }
+        
+        
+        @media only screen and (min-width: 768px)
+        {
+            
+        }
+        
+        
+        
+        @media only screen and (max-width: 600px)
+        {
+            .main-cont-profile
+            {
+                padding-top: 80px;
+            }
+            
+            .profile-cont
+            {
+                width: 100%;
+                font-size: .8em;
+            }
+            
+            .profile-top-section
+            {
+/*                font-size: .8em;*/
+            }
+            
+            .profile-img img
+            {
+                width: 6.5em;
+                height: 6.5em;
+            }
+            
+            .profile-nav-cards-cont,
+            .profile-content
+            {
+                width: 100%;
+                height: auto;
+            }
+            
+            .profile-content
+            {
+                margin-bottom: 1em;
+            }
+
+            .about-cont
+            {
+                width: 80%;
+                height: auto;
+                margin-bottom: 1em;
+            }
+            
+            .data-box
+            {
+                width: 80%;
+                height: auto;
+                padding-top: .5em;
+            }
+            
+            .user-data-cont
+            {
+                padding: 1.5em;
+                margin-bottom: 1em;
+            }
+            
+            .about-headline.profile-data
+            {
+                grid-template-columns: 2fr 8fr;
+            }
+            
+            .bottom
+            {
+                display: none;
+
+/*
+                position: absolute;
+                bottom: 0;
+                width: 100vw;
+*/
+                
+            }
+        }
+        
+        
+
+        
+/*        maybe width same (75%) 5 icons */
+        
+    </style>
+    
+ </head>
+ <body>
+            <header>
+           <div class="navbar not-visible-on-tablet">
+<!-- Logo -->
+              <div class="logo flex-center">
+                 <i class="fas fa-utensils"></i>
+                  RecipeShare 
+              </div>
+               <nav>
+                   <ul>
+                       <li>
+                           <a href="#">Home</a>
+                       </li>
+                       <li>
+                           <a href="#">Recipes</a>
+                       </li>
+                       <li>
+                           <a href="#">myRecipes</a>
+                       </li>
+                       <li>
+                           <a href="#">myProfile</a>
+                       </li>
+                       <li>
+                           <a href="#">Add Recipe</a>
+                       </li>
+                       <li>
+                           <a href="#">About Us</a>
+                       </li>
+                       <li>
+                           <i class="fas fa-align-left"></i>
+                       </li>
+                   </ul>
+               </nav>
+           </div>
+
+       </header>
+     <div class="main-cont-profile flex-center flex-column">
+<!--
+        <div class="profile-headline flex-center">
+            <div class="headline-line"></div>
+            <h2>Your Profile</h2>
+            <div class="headline-line"></div>
+        </div>
+-->
+         <div class="profile-cont flex-center flex-column">
+             <div class="profile-top-section flex-center flex-column">
+                 <div class="profile-img">
+                     <img src="mega-charizard-yandroid-iphone-desktop-hd-backgrounds-wallpapers-1080p-4k-obaqf-1514x2018.jpg" alt="profile picture">
+                 </div>
+                 <div class="username">RobertoCoock</div>
+<!--
+                 <div class="profile-top-info flex-center">
+                     <div class="top-info">Likes got 88</div>
+                     <div class="top-info">Own Recepies 76</div>
+                     <div class="top-info">Ibsums 88</div>
+                     <div class="top-info">Lorem 09</div>
+                 </div>
+-->
+             </div>
+             <div class="bottom-section flex-center flex-column">
+                
+                <div class="profile-content flex-center">
+                    <div class="about-cont">
+                    <div class="about-headline flex-center">
+                        <div class="flex-center">
+                            <i class="fas fa-user"></i>
+<!--                        <i class="far fa-user-circle"></i>-->
+                        <h5>About me</h5>
+                        </div>
+                        <div class="line"></div>
+                    </div>
+                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde, maxime repellendus magnam perferendis quia magni. Lorem ipsum dolor sit amet.</p>
+                 </div>
+                 
+                 <div class="data-box">
+                    <div class="about-headline profile-data flex-center">
+                        <div class="flex-center">
+                            <i class="fas fa-info"></i>
+                        <h5>User Info</h5>
+                        </div>
+                        <div class="line"></div>
+                    </div>
+                    <div class="user-data-cont flex-center flex-column">
+                        <div class="">dfdsd</div>
+                        <div class="">dfdsd</div>
+                        <div class="">dfdsd</div>
+                    </div>
+                 </div>
+                </div>
+<!--                <div class="hr" style="height: 2px; width: 75%; background: #000"></div>-->
+                 <div class="profile-nav-cards-cont flex-center">
+                     <div class="profile-nav-card flex-center flex-column">my Recipes</div>
+                     <div class="profile-nav-card flex-center flex-column">create Recipe</div>
+                     <div class="profile-nav-card flex-center flex-column">saved Recipes</div>
+                 </div>
+                 
+             </div>
+         </div>
+         <div class="bottom">
+             <div class="bottom-icons-cont flex-center">
+                 <img src="award.png" alt="">
+                 <img src="sketchbook.png" alt="">
+                 <img src="search.png" alt="">
+                 <img src="recipes.png" alt="">
+                 <img src="book.png" alt="">
+             </div>
+         </div>
+     </div>
+     
+ </body>
+ </html>
