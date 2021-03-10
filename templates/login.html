@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block content %}
+
+<!-- Main Container Registration/Login -->
+<div class="main-cont-login flex-center flex-column">
+    <!-- Login / Sign In FORM -->
+    <div id="sign-in-cont" class="sign-up-cont sign-in-cont">
+        <form method="POST" action="{{ url_for('login') }}" class="flex-center">
+            <!-- Left Side Sign In -->
+            <div class="sign-left-side">
+                <h5>Sign In</h5>
+                <!-- Image (Food Plate) -->
+                <img src="{{ url_for('static', filename='/img/plate_with_beef.png') }}" alt="">
+            </div>
+            <!-- Right Side Sign In (Inputs) -->
+            <div class="sign-right-side">
+                <!-- Username -->
+                <div class="data-input">
+                    <input id="username" name="username" type="text" required>
+                    <div class="input-underline"></div>
+                    <label for="username">USERNAME</label>
+                </div>
+                <!-- Password -->
+                <div class="data-input">
+                    <input id="password" name="password" type="password" required>
+                    <div class="input-underline"></div>
+                    <label for="password">PASSWORD</label>
+                </div>
+                <!-- Sign In BUTTON Container -->
+                <div class="sign-btn-cont">
+                    <button type="submit" class="sign-btn">Sign in</button>
+                    <!-- Switch To Sign Up BUTTON (Link) -->
+                    <a href="{{ url_for('register') }}" class="to-sign-up-btn">
+                        or <span style="color: #348D9A; font-weight: 500">Sign up</span>
+                    </a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

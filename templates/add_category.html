@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block content %}
+
+<!-- Main Container Add Category -->
+<div class="main-cont-login category flex-center flex-column">
+    <div class="container">
+        <!-- Add Category Form -->
+        <div class="sign-up-cont sign-in-cont categories">
+            <form method="POST" action="{{ url_for('add_category') }}" class="flex-center caterory">
+                <!-- Left Side Add Category -->
+                <div class="sign-left-side add-category">
+                    <h5>Add Category</h5>
+                    <!-- Image (Food Plate) -->
+                    <img src="{{ url_for('static', filename='img/shrimpsplate.png')}}" alt="plate with food">
+                </div>
+                <!-- Right Side Add Categories (Inputs) -->
+                <div class="sign-right-side add-category">
+                    <!-- Category Name -->
+                    <div class="data-input">
+                        <input id="category_name" name="category_name" type="text" minlength="2" maxlength="8" required>
+                        <div class="input-underline"></div>
+                        <label for="category_name">CATEGORY NAME</label>
+                    </div>
+                    <!-- Category Image Link -->
+                    <div class="data-input">
+                        <input id="category_png" name="category_png" minlength="2" type="text" required>
+                        <div class="input-underline"></div>
+                        <label for="category_png">CATEGORY IMAGE</label>
+                    </div>
+                    <!-- Submit New Category BUTTON -->
+                    <div class="sign-btn-cont">
+                        <button type="submit" class="sign-btn">
+                            Add <i class="fas fa-plus"></i>
+                        </button>
+                        <!-- Switch Back To Manage Categories -->
+                        <a href="{{ url_for('categories') }}" class="to-sign-up-btn">
+                            or <span style="color: #348D9A; font-weight: 500">Go Back</span>
+                        </a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

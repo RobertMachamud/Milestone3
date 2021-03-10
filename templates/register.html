@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+{% block content %}
+
+<!-- Main Container Registration/Login -->
+<div class="main-cont-login flex-center flex-column">
+    <!-- Registration / Sign Up FORM -->
+    <div id="sign-up-cont" class="sign-up-cont">
+        <form method="POST" action="{{ url_for('register') }}" class="flex-center">
+            <!-- Left Side Sign Up -->
+            <div class="sign-left-side">
+                <!-- Image (Food Plate) -->
+                <img src="{{ url_for('static', filename='/img/plate_with_salmon.png') }}" alt="">
+                <h5>Registration</h5>
+                <!-- Switch To Singn In BUTTON (Link) -->
+                <a href="{{ url_for('login') }}" class="to-sign-in-btn">
+                    to <span>Sign in</span>
+                </a>
+            </div>
+            <!-- Right Side Sign Up (Inputs) -->
+            <div class="sign-right-side">
+                <!-- Full Name -->
+                <div class="data-input">
+                    <input id="name" name="name" min-length="4" maxlength="25" type="text" required>
+                    <div class="input-underline"></div>
+                    <label for="name">FULL NAME</label>
+                </div>
+                <!-- Username -->
+                <div class="data-input">
+                    <input id="username" name="username" type="text" pattern="^[a-zA-Z0-9]{5,15}$" required>
+                    <div class="input-underline"></div>
+                    <label for="username">USERNAME</label>
+                </div>
+                <!-- Password -->
+                <div class="data-input">
+                    <input id="password" name="password" minlength="5" maxlenght="15" type="password" required>
+                    <div class="input-underline"></div>
+                    <label for="password">PASSWORD</label>
+                </div>
+                <!-- Email -->
+                <div class="data-input">
+                    <input id="email" name="email" type="email" required>
+                    <div class="input-underline"></div>
+                    <label for="email">MY EMAIL</label>
+                </div>
+                <!-- Cooking Level (Radio Input) -->
+                <div class="level-radios-cont d-flex justify-content-center" style="margin: -.5em 0 -1.5em 0">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="level" id="beginner" value="beginner" checked>
+                        <label class="form-check-label" for="beginner">Beginner</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="level" id="advanced" value="advanced">
+                        <label class="form-check-label" for="advanced">Advanced</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="level" id="professional" value="professional">
+                        <label class="form-check-label" for="professional">
+                            Professional
+                        </label>
+                    </div>
+                </div>
+                <!-- Date Of Birth -->
+                <div class="data-input">
+                    <input id="dob" name="dob" type="date" required>
+                    <div class="input-underline"></div>
+                    <label for="dob">DATE OF BIRTH</label>
+                </div>
+                <!-- Profile Image Input -->
+                <div class="data-input">
+                    <div class="input-underline"></div>
+                    <label for="img">SELECT IMAGE</label>
+                    <input type="file" id="user_img" name="user_img" accept="image/*">
+                    <div class="img-icon"><i class="fas fa-camera"></i></div>
+                </div>
+                <!-- About User (Textarea) -->
+                <div class="form-group" style="margin: -1em auto 2em auto; width: 80%;">
+                    <label class="about-label" for="about">ABOUT ME</label><br>
+                    <textarea id="about" name="about" class="about-txt-area" class="form-control" rows="3"
+                        maxlength="250"></textarea>
+                </div>
+                <!-- Sign Up Submit BUTTON Container -->
+                <div class="sign-btn-cont flex-center">
+                    <button type="submit" class="sign-btn">Sign Up</button>
+                    <div class="form-group" style="margin: 0">
+                        <!-- Terms & Conditions (Checkbox) -->
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="gridCheck" required>
+                            <label class="form-check-label" for="gridCheck">
+                                I agree with all <span class="terms"
+                                    style="color: #348D9A; text-decoration: underline; cursor: pointer;">Terms and
+                                    conditions</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

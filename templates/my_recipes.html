@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="main-cont-all-recipes">
+    <!-- Top Image -->
+    <div class="top-image">
+        <img src="{{ url_for('static', filename='img/tomatoes.jpg') }}" alt="">
+    </div>
+    <div class="filter-section container">
+        <!-- Headline For Filter/Search Section-->
+        <div class="filter-headline flex-center">
+            <div class="headline-line"></div>
+            <p>My Recipes</p>
+            <div class="headline-line"></div>
+        </div>
+    </div>
+
+    <!-- All Recipes Container -->
+    <div class="all-recipes-cont container">
+
+        <div class="card recipe-card">
+            <img class="card-img-top" src="{{ url_for('static', filename='img/pexels-any-lane-5945747.jpg') }}" alt="Card image cap">
+            <div class="card-body flex-column">
+                <h5 class="card-title">Mozarella Stics (like mama's)</h5>
+                <div class="card-infos flex-center">
+                    <div class="card-rating flex-center">
+                        <img src="{{ url_for('static', filename='img/chef.png') }}" alt="">
+                        <img src="{{ url_for('static', filename='img/chef.png') }}" alt="">
+                        <img src="{{ url_for('static', filename='img/chef.png') }}" alt="">
+                        <img src="{{ url_for('static', filename='img/chef.png') }}" alt="">
+                        <img src="{{ url_for('static', filename='img/chefgray.png') }}" alt="">
+                    </div>
+                    <div class="card-duration flex-center">
+                        <i class="fas fa-clock"></i>
+                        15min
+                    </div>
+                    <div class="card-difficulty flex-center;">
+                        <div>easy</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

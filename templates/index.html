@@ -25,32 +25,31 @@
                 </p>
                 <!-- Link BUTTONS (To Recipes / Profile) -->
                 <button>
-                    <a href="#"></a>
+                    <a href="{{ url_for('recipes') }}"></a>
                     See Recipes
                 </button>
                 <div class="to-profile">
-                    <div class="arrow-link">
+                    <a href="{{ url_for('profile', username=session['user']) }}" class="arrow-link">
                         profile <i class="fas fa-angle-right"></i>
-                    </div>
+                    </a>
                 </div>
             </div>
             <!-- Social Media Icons -->
             <div class="social-icons flex-center">
-                <i class="fab fa-facebook-f"></i>
-                <i class="fab fa-instagram"></i>
-                <i class="fab fa-twitter"></i>
-                <i class="fab fa-pinterest-p"></i>
+                <a href="https://www.facebook.com" target="_blank">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://www.instagram.com" target="_blank">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://www.twitter.com" target="_blank">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="https://www.pinterest.com" target="_blank">
+                    <i class="fab fa-pinterest-p"></i>
+                </a>
             </div>
         </div>
     </div>
-    
-    <!-- <script>
-    
-        const mobileMenuBtn = document.querySelector(".menu-btn");
-        const mobileNavMenu = document.querySelector(".mobile-navs");
-        
-        mobileMenuBtn.addEventListener("click", () => mobileNavMenu.classList.toggle("open"));
-        
-    </script> -->
 
 {% endblock %}

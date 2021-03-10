@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block content %}
+
+<!-- Main Container Manage Categories -->
+<div class="main-cont-login category flex-center flex-column">
+    <div class="container">
+        <!-- Manage Categories Container -->
+        <div class="sign-up-cont sign-in-cont category">
+            <div class="flex-center manage-categories-cont">
+                <!-- Left Side Sign In -->
+                <div class="sign-left-side all-categories">
+                    <h5>Manage Categories</h5>
+                    <!-- Image (Food Plate) -->
+                    <img class="categories-img"
+                        src="{{ url_for('static', filename='img/indianplate.png')}}"
+                        alt="Image of a plate with indian food">
+                    <a href="{{ url_for('add_category') }}" class="to-add-category-btn">
+                        <i class="fas fa-plus"></i>
+                        Add Category
+                    </a>
+                </div>
+                <!-- Categories -->
+                <div class="sign-right-side all-categories no-marking">
+
+                    {% for category in categories %}
+
+                        <div class="category flex-center">
+                            <a href="{{ url_for('edit_category', category_id=category._id) }}"></a>
+                            <i class="fas fa-wrench"></i>
+                            <a href="{{ url_for('delete_category', category_id=category._id) }}" class="delete-category-btn flex-center">
+                                <i class="fas fa-times" style="color: #fff"></i>
+                            </a>
+                            <img src="{{ category['category_png'] }}" alt="{{ category['category_name'] }} image">
+                            <span>{{ category['category_name']|capitalize }}</span>
+                        </div>
+
+                    {% endfor %}
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

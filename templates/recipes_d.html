@@ -1,0 +1,487 @@
+{% extends "base.html" %}
+{% block content %}
+
+<!-- Main Container - All Recipes -->
+<div class="main-cont-all-recipes">
+    <!-- Top Image -->
+    <div class="top-image">
+        <img src="{{ url_for('static', filename='img/topimage.jpg') }}" alt="">
+    </div>
+    <!-- Filter (by Category) and Search Section -->
+    <div class="filter-section container">
+        <!-- Headline For Filter/Search Section-->
+        <div class="filter-headline flex-center">
+            <div class="headline-line"></div>
+            <p>Categories</p>
+            <div class="headline-line"></div>
+            <!-- Toggle Hidden Categories BUTTON (Svg) -->
+            <div onclick="toggleHiddenCat()" class="toggle-categories-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-caret-down" viewBox="0 0 16 16">
+                    <path
+                        d="M3.204 5h9.592L8 10.481 3.204 5zm-.753.659l4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659z" />
+                </svg>
+                See All
+            </div>
+        </div>
+        <!-- Categories Container -->
+        <div class="categories-cont">
+            <div class="category flex-center">
+                <img src="{{ url_for('static', filename='img/vegetable.png') }}" alt="">
+                <span>V-tarian</span>
+            </div>
+            <div class="category flex-center">
+                <img src="{{ url_for('static', filename='img/salad.png') }}" alt="">
+                <span>Vegan</span>
+            </div>
+            <div class="category flex-center">
+                <img src="{{ url_for('static', filename='img/steak.png') }}" alt="">
+                <span>Meat</span>
+            </div>
+            <div class="category flex-center">
+                <img src="{{ url_for('static', filename='img/fish.png') }}" alt="">
+                <span>Fish</span>
+            </div>
+            <div class="category flex-center">
+                <img src="{{ url_for('static', filename='img/pudding.png') }}" alt="">
+                <span>Dessert</span>
+            </div>
+            <div class="category flex-center">
+                <img src="{{ url_for('static', filename='img/cupcakes.png') }}" alt="">
+                <span>Baking</span>
+            </div>
+
+        </div>
+        <!-- Hidden Categories Container -->
+        <div class="categories-cont hidden-categories-cont hidden">
+            <div class="category flex-center">
+                <img src="{{ url_for('static', filename='img/soda.png') }}" alt="">
+                <span>Drinks</span>
+            </div>
+        </div>
+        <!-- Search For Recipe Container -->
+        <div class="search-cont flex-center">
+            <div class="search">
+                <img src="{{ url_for('static', filename='img/loupe.png') }}" alt="">
+                <input type="text">
+            </div>
+        </div>
+        <!-- Headline For Filter/Search Section-->
+        <div class="filter-headline flex-center">
+            <div class="headline-line"></div>
+            <p>Search</p>
+            <div class="headline-line"></div>
+        </div>
+    </div>
+    <!-- All Recipes Container -->
+    <div class="all-recipes-cont container">
+
+        <div class="card recipe-card">
+            <img class="card-img-top" src="{{ url_for('static', filename='img/pexels-any-lane-5945747.jpg') }}" alt="Card image cap">
+            <div class="card-body flex-column">
+                <h5 class="card-title">Mozarella Stics (like mama's)</h5>
+                <div class="card-infos flex-center">
+                    <div class="card-rating flex-center">
+                        <img src="{{ url_for('static', filename='img/chef.png') }}" alt="">
+                        <img src="{{ url_for('static', filename='img/chef.png') }}" alt="">
+                        <img src="{{ url_for('static', filename='img/chef.png') }}" alt="">
+                        <img src="{{ url_for('static', filename='img/chef.png') }}" alt="">
+                        <img src="{{ url_for('static', filename='img/chefgray.png') }}" alt="">
+                    </div>
+                    <div class="card-duration flex-center">
+                        <i class="fas fa-clock"></i>
+                        15min
+                    </div>
+                    <div class="card-difficulty flex-center;">
+                        <div>easy</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="card recipe-card">
+            <img class="card-img-top" src="{{ url_for('static', filename='img/pexels-any-lane-5945747.jpg') }}" alt="Card image cap">
+            <div class="card-body flex-column">
+                <h5 class="card-title">Spaghetti Bolognese</h5>
+                <div class="card-infos flex-center">
+                    <div class="card-rating flex-center">
+                        <img src="{{ url_for('static', filename='img/chef.png') }}" alt="">
+                        <img src="{{ url_for('static', filename='img/chef.png') }}" alt="">
+                        <img src="{{ url_for('static', filename='img/chef.png') }}" alt="">
+                        <img src="{{ url_for('static', filename='img/chef.png') }}" alt="">
+                        <img src="{{ url_for('static', filename='img/chefgray.png') }}" alt="">
+                    </div>
+                    <div class="card-duration flex-center">
+                        <i class="fas fa-clock"></i>
+                        39min
+                    </div>
+                    <div class="card-difficulty flex-center;">
+                        <div>easy</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="card recipe-card">
+            <img class="card-img-top" src="{{ url_for('static', filename='img/pexels-any-lane-5945747.jpg') }}" alt="Card image cap">
+            <div class="card-body flex-column">
+                <h5 class="card-title">Hot Dogs in whatever with 2 different Sauces and stuff</h5>
+                <div class="card-infos flex-center">
+                    <div class="card-rating flex-center">
+                        <img src="{{ url_for('static', filename='img/chef.png') }}" alt="">
+                        <img src="{{ url_for('static', filename='img/chef.png') }}" alt="">
+                        <img src="{{ url_for('static', filename='img/chefgray.png') }}" alt="">
+                        <img src="{{ url_for('static', filename='img/chefgray.png') }}" alt="">
+                        <img src="{{ url_for('static', filename='img/chefgray.png') }}" alt="">
+                    </div>
+                    <div class="card-duration flex-center">
+                        <i class="fas fa-clock"></i>
+                        150min
+                    </div>
+                    <div class="card-difficulty flex-center;">
+                        <div>hard</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card recipe-card">
+            <img class="card-img-top" src="{{ url_for('static', filename='img/pexels-any-lane-5945747.jpg') }}" alt="Card image cap">
+            <div class="card-body flex-column">
+                <h5 class="card-title">Real American Pancakes to go and whatever</h5>
+                <div class="card-infos flex-center">
+                    <div class="card-rating flex-center">
+                        <img src="{{ url_for('static', filename='img/chef.png') }}" alt="">
+                        <img src="{{ url_for('static', filename='img/chefgray.png') }}" alt="">
+                        <img src="{{ url_for('static', filename='img/chefgray.png') }}" alt="">
+                        <img src="{{ url_for('static', filename='img/chefgray.png') }}" alt="">
+                        <img src="{{ url_for('static', filename='img/chefgray.png') }}" alt="">
+                    </div>
+                    <div class="card-duration flex-center">
+                        <i class="fas fa-clock"></i>
+                        15min
+                    </div>
+                    <div class="card-difficulty flex-center;">
+                        <div>medium</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="card recipe-card">
+            <img class="card-img-top" src="{{ url_for('static', filename='img/pexels-any-lane-5945747.jpg') }}" alt="Card image cap">
+            <div class="card-body flex-column">
+                <h5 class="card-title">Card title</h5>
+                <div class="card-infos flex-center">
+                    <div class="card-rating flex-center">
+                        <img src="{{ url_for('static', filename='img/chef.png') }}" alt="">
+                        <img src="{{ url_for('static', filename='img/chef.png') }}" alt="">
+                        <img src="{{ url_for('static', filename='img/chef.png') }}" alt="">
+                        <img src="{{ url_for('static', filename='img/chef.png') }}" alt="">
+                        <img src="{{ url_for('static', filename='img/chef.png') }}" alt="">
+                    </div>
+                    <div class="card-duration flex-center">
+                        <i class="fas fa-clock"></i>
+                        15min
+                    </div>
+                    <div class="card-difficulty flex-center;">
+                        <div>medium</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="card recipe-card">
+            <img class="card-img-top" src="{{ url_for('static', filename='img/pexels-any-lane-5945747.jpg') }}" alt="Card image cap">
+            <div class="card-body flex-column">
+                <h5 class="card-title">Card title</h5>
+                <div class="card-infos flex-center">
+                    <div class="card-rating flex-center">
+                        <img src="{{ url_for('static', filename='img/chef.png') }}" alt="">
+                        <img src="{{ url_for('static', filename='img/chef.png') }}" alt="">
+                        <img src="{{ url_for('static', filename='img/chef.png') }}" alt="">
+                        <img src="{{ url_for('static', filename='img/chef.png') }}" alt="">
+                        <img src="{{ url_for('static', filename='img/chef.png') }}" alt="">
+                    </div>
+                    <div class="card-duration flex-center">
+                        <i class="fas fa-clock"></i>
+                        15min
+                    </div>
+                    <div class="card-difficulty flex-center;">
+                        <div>medium</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="card recipe-card">
+            <img class="card-img-top" src="{{ url_for('static', filename='img/pexels-any-lane-5945747.jpg') }}" alt="Card image cap">
+            <div class="card-body flex-column">
+                <h5 class="card-title">Card title</h5>
+                <div class="card-infos flex-center">
+                    <div class="card-rating flex-center">
+                        <img src="{{ url_for('static', filename='img/chef.png') }}" alt="">
+                        <img src="{{ url_for('static', filename='img/chef.png') }}" alt="">
+                        <img src="{{ url_for('static', filename='img/chef.png') }}" alt="">
+                        <img src="{{ url_for('static', filename='img/chef.png') }}" alt="">
+                        <img src="{{ url_for('static', filename='img/chef.png') }}" alt="">
+                    </div>
+                    <div class="card-duration flex-center">
+                        <i class="fas fa-clock"></i>
+                        15min
+                    </div>
+                    <div class="card-difficulty flex-center;">
+                        <div>medium</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="card recipe-cardd">
+            <img class="card-img-top" src="{{ url_for('static', filename='img/pexels-any-lane-5945747.jpg') }}" alt="Card image cap">
+            <div class="card-body flex-column">
+                <h5 class="card-title">Card title</h5>
+                <div class="card-infos flex-center">
+                    <div class="card-rating flex-center">
+                        <img src="{{ url_for('static', filename='img/chef.png') }}" alt="">
+                        <img src="{{ url_for('static', filename='img/chef.png') }}" alt="">
+                        <img src="{{ url_for('static', filename='img/chef.png') }}" alt="">
+                        <img src="{{ url_for('static', filename='img/chef.png') }}" alt="">
+                        <img src="{{ url_for('static', filename='img/chef.png') }}" alt="">
+                    </div>
+                    <div class="card-duration flex-center">
+                        <i class="fas fa-clock"></i>
+                        15min
+                    </div>
+                    <div class="card-difficulty flex-center;">
+                        <div>medium</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="card recipe-card">
+            <img class="card-img-top" src="{{ url_for('static', filename='img/pexels-any-lane-5945747.jpg') }}" alt="Card image cap">
+            <div class="card-body flex-column">
+                <h5 class="card-title">Card title</h5>
+                <div class="card-infos flex-center">
+                    <div class="card-rating flex-center">
+                        <img src="{{ url_for('static', filename='img/chef.png') }}" alt="">
+                        <img src="{{ url_for('static', filename='img/chef.png') }}" alt="">
+                        <img src="{{ url_for('static', filename='img/chef.png') }}" alt="">
+                        <img src="{{ url_for('static', filename='img/chef.png') }}" alt="">
+                        <img src="{{ url_for('static', filename='img/chef.png') }}" alt="">
+                    </div>
+                    <div class="card-duration flex-center">
+                        <i class="fas fa-clock"></i>
+                        15min
+                    </div>
+                    <div class="card-difficulty flex-center;">
+                        <div>medium</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="card recipe-card">
+            <img class="card-img-top" src="{{ url_for('static', filename='img/pexels-any-lane-5945747.jpg') }}" alt="Card image cap">
+            <div class="card-body flex-column">
+                <h5 class="card-title">Card title</h5>
+                <div class="card-infos flex-center">
+                    <div class="card-rating flex-center">
+                        <img src="{{ url_for('static', filename='img/chef.png') }}" alt="">
+                        <img src="{{ url_for('static', filename='img/chef.png') }}" alt="">
+                        <img src="{{ url_for('static', filename='img/chef.png') }}" alt="">
+                        <img src="{{ url_for('static', filename='img/chef.png') }}" alt="">
+                        <img src="{{ url_for('static', filename='img/chef.png') }}" alt="">
+                    </div>
+                    <div class="card-duration flex-center">
+                        <i class="fas fa-clock"></i>
+                        15min
+                    </div>
+                    <div class="card-difficulty flex-center;">
+                        <div>medium</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="card recipe-card">
+            <img class="card-img-top" src="{{ url_for('static', filename='img/pexels-any-lane-5945747.jpg') }}" alt="Card image cap">
+            <div class="card-body flex-column">
+                <h5 class="card-title">Card title</h5>
+                <div class="card-infos flex-center">
+                    <div class="card-rating flex-center">
+                        <img src="{{ url_for('static', filename='img/chef.png') }}" alt="">
+                        <img src="{{ url_for('static', filename='img/chef.png') }}" alt="">
+                        <img src="{{ url_for('static', filename='img/chef.png') }}" alt="">
+                        <img src="{{ url_for('static', filename='img/chef.png') }}" alt="">
+                        <img src="{{ url_for('static', filename='img/chef.png') }}" alt="">
+                    </div>
+                    <div class="card-duration flex-center">
+                        <i class="fas fa-clock"></i>
+                        15min
+                    </div>
+                    <div class="card-difficulty flex-center;">
+                        <div>medium</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="card recipe-card">
+            <img class="card-img-top" src="{{ url_for('static', filename='img/pexels-any-lane-5945747.jpg') }}" alt="Card image cap">
+            <div class="card-body flex-column">
+                <h5 class="card-title">Card title</h5>
+                <div class="card-infos flex-center">
+                    <div class="card-rating flex-center">
+                        <img src="{{ url_for('static', filename='img/chef.png') }}" alt="">
+                        <img src="{{ url_for('static', filename='img/chef.png') }}" alt="">
+                        <img src="{{ url_for('static', filename='img/chef.png') }}" alt="">
+                        <img src="{{ url_for('static', filename='img/chef.png') }}" alt="">
+                        <img src="{{ url_for('static', filename='img/chef.png') }}" alt="">
+                    </div>
+                    <div class="card-duration flex-center">
+                        <i class="fas fa-clock"></i>
+                        15min
+                    </div>
+                    <div class="card-difficulty flex-center;">
+                        <div>medium</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="card recipe-card">
+            <img class="card-img-top" src="{{ url_for('static', filename='img/pexels-any-lane-5945747.jpg') }}" alt="Card image cap">
+            <div class="card-body flex-column">
+                <h5 class="card-title">Card title</h5>
+                <div class="card-infos flex-center">
+                    <div class="card-rating flex-center">
+                        <img src="{{ url_for('static', filename='img/chef.png') }}" alt="">
+                        <img src="{{ url_for('static', filename='img/chef.png') }}" alt="">
+                        <img src="{{ url_for('static', filename='img/chef.png') }}" alt="">
+                        <img src="{{ url_for('static', filename='img/chef.png') }}" alt="">
+                        <img src="{{ url_for('static', filename='img/chef.png') }}" alt="">
+                    </div>
+                    <div class="card-duration flex-center">
+                        <i class="fas fa-clock"></i>
+                        15min
+                    </div>
+                    <div class="card-difficulty flex-center;">
+                        <div>medium</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="card recipe-card">
+            <img class="card-img-top" src="{{ url_for('static', filename='img/pexels-any-lane-5945747.jpg') }}" alt="Card image cap">
+            <div class="card-body flex-column">
+                <h5 class="card-title">Card title</h5>
+                <div class="card-infos flex-center">
+                    <div class="card-rating flex-center">
+                        <img src="{{ url_for('static', filename='img/chef.png') }}" alt="">
+                        <img src="{{ url_for('static', filename='img/chef.png') }}" alt="">
+                        <img src="{{ url_for('static', filename='img/chef.png') }}" alt="">
+                        <img src="{{ url_for('static', filename='img/chef.png') }}" alt="">
+                        <img src="{{ url_for('static', filename='img/chef.png') }}" alt="">
+                    </div>
+                    <div class="card-duration flex-center">
+                        <i class="fas fa-clock"></i>
+                        15min
+                    </div>
+                    <div class="card-difficulty flex-center;">
+                        <div>medium</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="card">
+            <img class="card-img-top" src="{{ url_for('static', filename='img/pexels-any-lane-5945747.jpg') }}" alt="Card image cap">
+            <div class="card-body flex-column">
+                <h5 class="card-title">Card title</h5>
+                <div class="card-infos flex-center">
+                    <div class="card-rating flex-center">
+                        <img src="{{ url_for('static', filename='img/chef.png') }}" alt="">
+                        <img src="{{ url_for('static', filename='img/chef.png') }}" alt="">
+                        <img src="{{ url_for('static', filename='img/chef.png') }}" alt="">
+                        <img src="{{ url_for('static', filename='img/chef.png') }}" alt="">
+                        <img src="{{ url_for('static', filename='img/chef.png') }}" alt="">
+                    </div>
+                    <div class="card-duration flex-center">
+                        <i class="fas fa-clock"></i>
+                        15min
+                    </div>
+                    <div class="card-difficulty flex-center;">
+                        <div>medium</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="card">
+            <img class="card-img-top" src="{{ url_for('static', filename='img/pexels-any-lane-5945747.jpg') }}" alt="Card image cap">
+            <div class="card-body flex-column">
+                <h5 class="card-title">Card title</h5>
+                <div class="card-infos flex-center">
+                    <div class="card-rating flex-center">
+                        <img src="{{ url_for('static', filename='img/chef.png') }}" alt="">
+                        <img src="{{ url_for('static', filename='img/chef.png') }}" alt="">
+                        <img src="{{ url_for('static', filename='img/chef.png') }}" alt="">
+                        <img src="{{ url_for('static', filename='img/chef.png') }}" alt="">
+                        <img src="{{ url_for('static', filename='img/chef.png') }}" alt="">
+                    </div>
+                    <div class="card-duration flex-center">
+                        <i class="fas fa-clock"></i>
+                        15min
+                    </div>
+                    <div class="card-difficulty flex-center;">
+                        <div>medium</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- <script>
+
+    const hiddenTags = document.querySelector(".hidden-tags-cont");
+    const hiddenCategories = document.querySelector(".categories-cont.hidden-categories-cont");
+    
+    
+    const toggleHiddenCat = () => {
+        hiddenCategories.classList.toggle("hidden");
+    }
+    
+    <img src="{{ url_for('static', filename='img/{{ category['category_png'] }}') }}" alt="category: {{ category['category_name'] }}">
+
+    
+    const toggleHiddenTag = () => {
+        hiddenTags.classList.toggle("hidden");
+    }
+    
+    
+    // wide screen - width ca 80% of category cont -- maybe whole cont (lines etc)
+    
+</script> -->
+
+{% endblock %}

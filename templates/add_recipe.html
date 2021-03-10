@@ -1,0 +1,219 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="main-cont-create flex-center flex-column">
+    <div class="container">
+        <!-- Create Recipe Container -->
+        <form method="POST" action="" class="create-recipe-cont">
+            <!-- Create Recipe Steps BUTTONS Container -->
+            <div class="create-steps-cont flex-center no-marking">
+                <div onclick="changeCreateRecipeTab(event)" class="create-step flex-center active" data-tab="ingredients-section">Ingredients</div>
+                <div onclick="changeCreateRecipeTab(event)" class="create-step flex-center" data-tab="preparation-section">Preparation</div>
+                <div onclick="changeCreateRecipeTab(event)" class="create-step flex-center" data-tab="categories-section">Categroies</div>
+                <div onclick="changeCreateRecipeTab(event)" class="create-step flex-center" data-tab="recipe-image-section">RecipeImage</div>
+            </div>
+            <!-- Ingredients Section (Tab) -->
+            <div class="ingredients-section create-section">
+                <div class="flex-center" style="justify-content: space-between; flex-wrap: wrap">
+                    <!-- Recipe Name (Input) -->
+                    <div class="data-input">
+                        <input id="recipe_name" name="recipe_name" min-length="4" maxlength="25" type="text" required>
+                        <div class="input-underline recipe-name"></div>
+                        <label for="recipe_name">RECIPE NAME</label>
+                    </div>
+                    <!-- Difficulty Of Recipe Container (Radios) -->
+                    <div class="select-difficulty-cont">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="difficulty" id="easy" value="easy" checked>
+                            <label class="form-check-label" for="easy">Easy</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="difficulty" id="medium" value="medium">
+                            <label class="form-check-label" for="medium">Medium</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="difficulty" id="hard" value="hard">
+                            <label class="form-check-label" for="hard">
+                                Hard
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <!-- Ingredients Container (Inputs) -->
+                <div class="ingredients-cont">
+                    <h3> <img class="headline-icon" src="{{ url_for('static', filename='img/clipboard.png') }}" alt=""> Ingredients</h3>
+                    <!-- Ingredients - Amount/Unit/Ingredient (Inputs) -->
+                    <div class="ingredient-inputs flex-center">
+                        <div class="data-input amount">
+                            <input name="recipe_amount" type="number" min="0" required>
+                            <div class="input-underline"></div>
+                            <label for="recipe_amount">AMOUNT</label>
+                        </div>
+                        <div class="data-input unit">
+                            <input name="recipe_unit" min-length="1" maxlength="11" type="text" required>
+                            <div class="input-underline"></div>
+                            <label for="recipe_unit">UNIT</label>
+                        </div>
+                        <div class="data-input ingredient">
+                            <input name="recipe_ingredient" min-length="4" maxlength="25" type="text" required>
+                            <div class="input-underline"></div>
+                            <label for="recipe_ingredient">INGREDIENT</label>
+                        </div>
+                        <button onclick="removeIngredient(event)" class="remove-ingredient-btn">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    <div class="ingredient-inputs flex-center">
+                        <div class="data-input amount">
+                            <input name="recipe_amount" type="number" min="0" required>
+                            <div class="input-underline"></div>
+                            <label for="recipe_amount">AMOUNT</label>
+                        </div>
+                        <div class="data-input unit">
+                            <input name="recipe_unit" min-length="1" maxlength="11" type="text" required>
+                            <div class="input-underline"></div>
+                            <label for="recipe_unit">UNIT</label>
+                        </div>
+                        <div class="data-input ingredient">
+                            <input name="recipe_ingredient" min-length="4" maxlength="25" type="text" required>
+                            <div class="input-underline"></div>
+                            <label for="recipe_ingredient">INGREDIENT</label>
+                        </div>
+                        <button onclick="removeIngredient(event)" class="remove-ingredient-btn">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    <div class="ingredient-inputs flex-center">
+                        <div class="data-input amount">
+                            <input name="recipe_amount" type="number" min="0" required>
+                            <div class="input-underline"></div>
+                            <label for="recipe_amount">AMOUNT</label>
+                        </div>
+                        <div class="data-input unit">
+                            <input name="recipe_unit" min-length="1" maxlength="11" type="text" required>
+                            <div class="input-underline"></div>
+                            <label for="recipe_unit">UNIT</label>
+                        </div>
+                        <div class="data-input ingredient">
+                            <input name="recipe_ingredient" min-length="4" maxlength="25" type="text" required>
+                            <div class="input-underline"></div>
+                            <label for="recipe_ingredient">INGREDIENT</label>
+                        </div>
+                        <button onclick="removeIngredient(event)" class="remove-ingredient-btn">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+                <!-- Add Three More Ingredients Inputs - BUTTON -->
+                <button onclick="addThreeIngredientInputs()" class="add-ingredients-input-btn">
+                    <i class="fas fa-plus"></i>
+                </button>
+            </div>
+            <!-- Pereparation Section (Tab) -->
+            <div class="preparation-section create-section hidden">
+                <!-- Duration -->
+                <div class="duration-cont flex-center">
+                    <div class="duration-icon">
+                        <img src="{{ url_for('static', filename='img/sand-clock.png') }}" alt="">
+                    </div>
+                    <!-- Hours (Input) -->
+                    <div class="data-input">
+                        <input id="hours" name="hours" type="number">
+                        <div class="input-underline"></div>
+                        <label for="hours">HOURS</label>
+                    </div>
+                    <!-- Minutes (Input) -->
+                    <div class="data-input">
+                        <input id="minutes" name="minutes" type="number" max="60" required>
+                        <div class="input-underline"></div>
+                        <label for="minutes">MINUTES</label>
+                    </div>
+                </div>
+                <p>
+                    Hier kannst du beschreiben, welche Schritte für die Zubereitung des Rezeptes notwendig sind. Bitte achte darauf, dass alle relevanten Informationen enthalten sind, z.B. Angaben zur Temperatur des Backofens und dass alle von dir aufgeführten Zutaten enthalten sind.
+                </p>
+                <div class="preparation-icon flex-center">
+                    <img src="{{ url_for('static', filename='img/whisk-and-bowl.png') }}" alt="">
+                    <h3>Preparation Step By Step</h3>
+                </div>
+                <!-- Preparation Container (Textareas) -->
+                <div class="preparation flex-center">
+                    <div class="form-group preparation-txtarea">
+                        <button onclick="removePreparationStep(event)" class="delete-preparation-txtarea-btn">
+                            <i class="fas fa-times"></i>
+                        </button>
+                        <label class="about-label" for="prep_step">PREPARATION STEP</label><br>
+                        <textarea name="prep_step" class="about-txt-area" class="form-control" rows="3" maxlength="250"></textarea>
+                    </div>
+                    <div class="form-group preparation-txtarea">
+                        <button onclick="removePreparationStep(event)" class="delete-preparation-txtarea-btn">
+                            <i class="fas fa-times"></i>
+                        </button>
+                        <label class="about-label" for="prep_step">PREPARATION STEP</label><br>
+                        <textarea name="prep_step" class="about-txt-area" class="form-control" rows="3" maxlength="250"></textarea>
+                    </div>
+                    <div class="form-group preparation-txtarea">
+                        <button onclick="removePreparationStep(event)" class="delete-preparation-txtarea-btn">
+                            <i class="fas fa-times"></i>
+                        </button>
+                        <label class="about-label" for="prep_step">PREPARATION STEP</label><br>
+                        <textarea name="prep_step" class="about-txt-area" class="form-control" rows="3" maxlength="250"></textarea>
+                    </div>
+                    <div class="form-group preparation-txtarea">
+                        <button onclick="removePreparationStep(event)" class="delete-preparation-txtarea-btn">
+                            <i class="fas fa-times"></i>
+                        </button>
+                        <label class="about-label" for="prep_step">PREPARATION STEP</label><br>
+                        <textarea name="prep_step" class="about-txt-area" class="form-control" rows="3" maxlength="250"></textarea>
+                    </div>
+                </div>
+                <!-- Add Two More Preparatino Steps Textareas - BUTTON -->
+                <button onclick="addTwoPreparatrionTxtareas()" class="add-ingredients-input-btn add-preparation-txt-area-btn">
+                    <i class="fas fa-plus"></i>
+                </button>
+            </div>
+            <!-- Categories Section -->
+            <div class="categories-section create-section hidden">
+                <div class="flex-center" style="justify-content: space-between; width: 100%;">
+                    <!-- Select Categoie -->
+                    <select class="form-select form-select-lg mb-3 select-category" aria-label=".form-select-lg example">
+                        <option selected>Select a category for your recipe</option>
+
+                        {% for category in categories %}
+
+                            <option>{{ category.category_name|capitalize }}</option>
+
+                        {% endfor %}
+
+                    </select>
+                    <h3><img class="headline-icon" src="{{ url_for('static', filename='img/food.png') }}" alt=""> Category For Your Recipe</h3>
+                </div>
+            </div>
+            <!-- Recipe Image and Submit Seciton -->
+            <div class="recipe-image-section create-section hidden">
+                <!-- Drag & Drop for Images Container -->
+                <div id="dropFileForm">
+                    <input type="file" name="recipe_img" id="recipe_img" multiple onchange="addFiles(event)">
+                    <!--  Label for Drag & Drop Cont -->
+                    <label for="recipe_img" id="fileLabel" ondragover="overrideDefault(event);fileHover();" ondragenter="overrideDefault(event);fileHover();" ondragleave="overrideDefault(event);fileHoverEnd();" ondrop="overrideDefault(event);fileHoverEnd(); addFiles(event);">
+                        <!-- Icon -->
+                        <i class="fa fa-download fa-5x"></i>
+                        <br>
+                        <!-- Txt for Img -->
+                        <span id="fileLabelText">
+                            Choose a file or drag it here
+                        </span>
+                        <br>
+                    </label>
+                    <!-- Submit Form BUTTON -->
+                    <button type="submit" class="uploadButton">
+                        <i class="fas fa-check" style="margin-right: 3px"></i>
+                        Upload Your Recipe
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

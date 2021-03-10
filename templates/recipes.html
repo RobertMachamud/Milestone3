@@ -1,474 +1,98 @@
 {% extends "base.html" %}
 {% block content %}
 
-<!-- Top Image -->
-<div class="top-image">
-    <img src="pexels-karolina-grabowska-6659681.jpg" alt="">
-</div>
-<!-- Filter / Search / Tags Section -->
-<div class="filter-section">
-    <!-- Filter Headline -->
-    <div class="filter-headline">
-        Categories
-        <div onclick="toggleHiddenCat()" class="toggle-categories-btn">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                class="bi bi-caret-down" viewBox="0 0 16 16">
-                <path
-                    d="M3.204 5h9.592L8 10.481 3.204 5zm-.753.659l4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659z" />
-            </svg>
-            See All
-        </div>
+<!-- Main Container - All Recipes -->
+<div class="main-cont-all-recipes">
+    <!-- Top Image -->
+    <div class="top-image">
+        <img src="{{ url_for('static', filename='img/topimage.jpg') }}" alt="">
     </div>
-    <div class="categories-cont">
-        <div class="category flex-center">
-            <img src="vegetable.png" alt="">
-            <span>V-tarian</span>
+    <!-- Filter (by Category) and Search Section -->
+    <div class="filter-section container">
+        <!-- Headline For Filter/Search Section-->
+        <div class="filter-headline flex-center">
+            <div class="headline-line"></div>
+            <p>Categories</p>
+            <div class="headline-line"></div>
+            <!-- Toggle Hidden Categories BUTTON (Svg) -->
+            <div onclick="toggleHiddenCat()" class="toggle-categories-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-caret-down" viewBox="0 0 16 16">
+                    <path
+                        d="M3.204 5h9.592L8 10.481 3.204 5zm-.753.659l4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659z" />
+                </svg>
+                <span>See Less</span>
+            </div>
         </div>
-        <div class="category flex-center">
-            <img src="salad.png" alt="">
-            <span>Vegan</span>
-        </div>
-        <div class="category flex-center">
-            <img src="steak.png" alt="">
-            <span>Meat</span>
-        </div>
-        <div class="category flex-center">
-            <img src="fish.png" alt="">
-            <span>Fish</span>
-        </div>
-        <div class="category flex-center">
-            <img src="pudding.png" alt="">
-            <span>Dessert</span>
-        </div>
-        <div class="category flex-center">
-            <img src="cupcake%20(2).png" alt="">
-            <span>Baking</span>
-        </div>
-    </div>
-    <div class="categories-cont hidden-categories-cont">
-        <div class="category flex-center">
-            <img src="cupcake%20(2).png" alt="">
-            <span>Drinks</span>
-        </div>
-    </div>
+        <!-- Categories Container -->
+        <div class="categories-cont">
 
-    <!-- Search Section -->
-    <div class="search-cont flex-center">
-        <div class="search">
-            <img src="loupe.png" alt="">
-        </div>
-    </div>
+            {% for category in categories %}
 
-    <!-- Hidden Tags Container -->
-    <div class="hidden-tags-cont">
-        <div class="tag flex-center">Soup</div>
-        <div class="tag flex-center">Smoothie</div>
-        <div class="tag flex-center">Burger</div>
-    </div>
+            <div onclick="getCategoryName(event)" class="category flex-center" data-category="{{ category['category_name'] }}">
+                <img src="{{ category['category_png'] }}" alt="{{ category['category_name'] }} image">
+                <span>{{ category['category_name']|capitalize }}</span>
+            </div>
 
-    <!-- Filter Headline -->
-    <div class="filter-headline">
-        Search / Filter
-        <div onclick="toggleHiddenTag()" class="toggle-tags-btn">
-            See Tags
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                class="bi bi-caret-up" viewBox="0 0 16 16">
-                <path
-                    d="M3.204 11h9.592L8 5.519 3.204 11zm-.753-.659l4.796-5.48a1 1 0 0 1 1.506 0l4.796 5.48c.566.647.106 1.659-.753 1.659H3.204a1 1 0 0 1-.753-1.659z" />
-            </svg>
+            {% endfor %}
 
         </div>
+        <!-- Search For Recipe Container -->
+        <form method="POST" action="{{ url_for('search') }}" class="search-cont flex-center">
+            <div class="search">
+                <button type="submit" class="search-btn">
+                    <img src="{{ url_for('static', filename='img/loupe.png') }}" alt="">
+                </button>
+                <input id="query" name="query" type="text" minlength="1" required>
+                <label for="query" class="hidden"></label>
+                <a id="remove-query-btn" href="{{ url_for('recipes') }}">
+                    <i class="fas fa-times"></i>
+                </a>
+                
+            </div>
+        </form>
+        <!-- Headline For Filter/Search Section-->
+        <div class="filter-headline flex-center">
+            <div class="headline-line"></div>
+            <p>Search</p>
+            <div class="headline-line"></div>
+        </div>
     </div>
-</div>
+    <!-- All Recipes Container -->
+    <div class="all-recipes-cont container">
 
-<div class="all-recipes-cont container">
+        {% for recipe in recipes %}
 
-    <!-- Recipe Card -->
-    <div class="card">
-        <!-- Recipe Card Image -->
-        <img class="card-img-top" src="pexels-any-lane-5945747.jpg" alt="Card image cap">
-        <div class="card-body flex-column">
-            <!-- Recipe Name -->
-            <h5 class="card-title">Mozarella Stics (like mama's)</h5>
-            <div class="card-infos flex-center">
-                <!-- Recipe Rating -->
-                <div class="card-rating flex-center">
-                    <img src="chef.png" alt="">
-                    <img src="chef.png" alt="">
-                    <img src="chef.png" alt="">
-                    <img src="chef.png" alt="">
-                    <img src="chef%20(3).png" alt="">
-                </div>
-                <!-- Recipe Duration -->
-                <div class="card-duration flex-center">
-                    <i class="fas fa-clock"></i>
-                    15min
-                </div>
-                <!-- Recipe Difficulty -->
-                <div class="card-difficulty flex-center;">
-                    <div>easy</div>
+        {% set rate = recipe['rating'] %}
+        {% set no_rate = 5 - recipe['rating'] %}
+
+        <div class="card recipe-card" data-category="{{ recipe['category'] }}">
+            <img class="card-img-top" src="{{ url_for('static', filename='img/pexels-any-lane-5945747.jpg') }}" alt="Card image cap">
+            <div class="card-body flex-column">
+                <h5 class="card-title">{{ recipe['recipe_name']|title }}</h5>
+                <div class="card-infos flex-center">
+                    <div class="card-rating flex-center">
+                        {% for rating in range(rate) %}
+                            <img src="{{ url_for('static', filename='img/chef.png') }}" alt="">
+                        {% endfor %}
+                        {% for no_rating in range (no_rate) %}
+                            <img src="{{ url_for('static', filename='img/chefgray.png') }}" alt="">
+                        {% endfor %}
+                    </div>
+
+                    <div class="card-duration flex-center">
+                        <i class="fas fa-clock"></i>
+                        {{ recipe['duration_h'] }}h {{ recipe['duration_min'] }}min
+                    </div>
+                    <div class="card-difficulty flex-center">
+                        <div>{{ recipe['difficulty'] }}</div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
+        {% endfor %}
 
-    <div class="card">
-        <img class="card-img-top" src="pexels-any-lane-5945747.jpg" alt="Card image cap">
-        <div class="card-body flex-column">
-            <h5 class="card-title">Spaghetti Bolognese</h5>
-            <div class="card-infos flex-center">
-                <div class="card-rating flex-center">
-                    <img src="chef.png" alt="">
-                    <img src="chef.png" alt="">
-                    <img src="chef.png" alt="">
-                    <img src="chef.png" alt="">
-                    <img src="chef%20(2).png" alt="">
-                </div>
-                <div class="card-duration flex-center">
-                    <i class="fas fa-clock"></i>
-                    39min
-                </div>
-                <div class="card-difficulty flex-center;">
-                    <div>medium</div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <div class="card">
-        <img class="card-img-top" src="pexels-any-lane-5945747.jpg" alt="Card image cap">
-        <div class="card-body flex-column">
-            <h5 class="card-title">Hot Dogs in whatever with 2 different Sauces and stuff</h5>
-            <div class="card-infos flex-center">
-                <div class="card-rating flex-center">
-                    <img src="chef.png" alt="">
-                    <img src="chef.png" alt="">
-                    <img src="chef%20(3).png" alt="">
-                    <img src="chef%20(3).png" alt="">
-                    <img src="chef%20(3).png" alt="">
-                </div>
-                <div class="card-duration flex-center">
-                    <i class="fas fa-clock"></i>
-                    150min
-                </div>
-                <div class="card-difficulty flex-center;">
-                    <div>hard</div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="card">
-        <img class="card-img-top" src="pexels-any-lane-5945747.jpg" alt="Card image cap">
-        <div class="card-body flex-column">
-            <h5 class="card-title">Real American Pancakes to go and whatever</h5>
-            <div class="card-infos flex-center">
-                <div class="card-rating flex-center">
-                    <img src="chef.png" alt="">
-                    <img src="chef%20(3).png" alt="">
-                    <img src="chef%20(3).png" alt="">
-                    <img src="chef%20(3).png" alt="">
-                    <img src="chef%20(3).png" alt="">
-                </div>
-                <div class="card-duration flex-center">
-                    <i class="fas fa-clock"></i>
-                    15min
-                </div>
-                <div class="card-difficulty flex-center;">
-                    <div>medium</div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <div class="card">
-        <img class="card-img-top" src="pexels-any-lane-5945747.jpg" alt="Card image cap">
-        <div class="card-body flex-column">
-            <h5 class="card-title">Card title</h5>
-            <div class="card-infos flex-center">
-                <div class="card-rating flex-center">
-                    <img src="chef.png" alt="">
-                    <img src="chef.png" alt="">
-                    <img src="chef.png" alt="">
-                    <img src="chef.png" alt="">
-                    <img src="chef.png" alt="">
-                </div>
-                <div class="card-duration flex-center">
-                    <i class="fas fa-clock"></i>
-                    15min
-                </div>
-                <div class="card-difficulty flex-center;">
-                    <div>medium</div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <div class="card">
-        <img class="card-img-top" src="pexels-any-lane-5945747.jpg" alt="Card image cap">
-        <div class="card-body flex-column">
-            <h5 class="card-title">Card title</h5>
-            <div class="card-infos flex-center">
-                <div class="card-rating flex-center">
-                    <img src="chef.png" alt="">
-                    <img src="chef.png" alt="">
-                    <img src="chef.png" alt="">
-                    <img src="chef.png" alt="">
-                    <img src="chef.png" alt="">
-                </div>
-                <div class="card-duration flex-center">
-                    <i class="fas fa-clock"></i>
-                    15min
-                </div>
-                <div class="card-difficulty flex-center;">
-                    <div>medium</div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <div class="card">
-        <img class="card-img-top" src="pexels-any-lane-5945747.jpg" alt="Card image cap">
-        <div class="card-body flex-column">
-            <h5 class="card-title">Card title</h5>
-            <div class="card-infos flex-center">
-                <div class="card-rating flex-center">
-                    <img src="chef.png" alt="">
-                    <img src="chef.png" alt="">
-                    <img src="chef.png" alt="">
-                    <img src="chef.png" alt="">
-                    <img src="chef.png" alt="">
-                </div>
-                <div class="card-duration flex-center">
-                    <i class="fas fa-clock"></i>
-                    15min
-                </div>
-                <div class="card-difficulty flex-center;">
-                    <div>medium</div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <div class="card">
-        <img class="card-img-top" src="pexels-any-lane-5945747.jpg" alt="Card image cap">
-        <div class="card-body flex-column">
-            <h5 class="card-title">Card title</h5>
-            <div class="card-infos flex-center">
-                <div class="card-rating flex-center">
-                    <img src="chef.png" alt="">
-                    <img src="chef.png" alt="">
-                    <img src="chef.png" alt="">
-                    <img src="chef.png" alt="">
-                    <img src="chef.png" alt="">
-                </div>
-                <div class="card-duration flex-center">
-                    <i class="fas fa-clock"></i>
-                    15min
-                </div>
-                <div class="card-difficulty flex-center;">
-                    <div>medium</div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <div class="card">
-        <img class="card-img-top" src="pexels-any-lane-5945747.jpg" alt="Card image cap">
-        <div class="card-body flex-column">
-            <h5 class="card-title">Card title</h5>
-            <div class="card-infos flex-center">
-                <div class="card-rating flex-center">
-                    <img src="chef.png" alt="">
-                    <img src="chef.png" alt="">
-                    <img src="chef.png" alt="">
-                    <img src="chef.png" alt="">
-                    <img src="chef.png" alt="">
-                </div>
-                <div class="card-duration flex-center">
-                    <i class="fas fa-clock"></i>
-                    15min
-                </div>
-                <div class="card-difficulty flex-center;">
-                    <div>medium</div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <div class="card">
-        <img class="card-img-top" src="pexels-any-lane-5945747.jpg" alt="Card image cap">
-        <div class="card-body flex-column">
-            <h5 class="card-title">Card title</h5>
-            <div class="card-infos flex-center">
-                <div class="card-rating flex-center">
-                    <img src="chef.png" alt="">
-                    <img src="chef.png" alt="">
-                    <img src="chef.png" alt="">
-                    <img src="chef.png" alt="">
-                    <img src="chef.png" alt="">
-                </div>
-                <div class="card-duration flex-center">
-                    <i class="fas fa-clock"></i>
-                    15min
-                </div>
-                <div class="card-difficulty flex-center;">
-                    <div>medium</div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <div class="card">
-        <img class="card-img-top" src="pexels-any-lane-5945747.jpg" alt="Card image cap">
-        <div class="card-body flex-column">
-            <h5 class="card-title">Card title</h5>
-            <div class="card-infos flex-center">
-                <div class="card-rating flex-center">
-                    <img src="chef.png" alt="">
-                    <img src="chef.png" alt="">
-                    <img src="chef.png" alt="">
-                    <img src="chef.png" alt="">
-                    <img src="chef.png" alt="">
-                </div>
-                <div class="card-duration flex-center">
-                    <i class="fas fa-clock"></i>
-                    15min
-                </div>
-                <div class="card-difficulty flex-center;">
-                    <div>medium</div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <div class="card">
-        <img class="card-img-top" src="pexels-any-lane-5945747.jpg" alt="Card image cap">
-        <div class="card-body flex-column">
-            <h5 class="card-title">Card title</h5>
-            <div class="card-infos flex-center">
-                <div class="card-rating flex-center">
-                    <img src="chef.png" alt="">
-                    <img src="chef.png" alt="">
-                    <img src="chef.png" alt="">
-                    <img src="chef.png" alt="">
-                    <img src="chef.png" alt="">
-                </div>
-                <div class="card-duration flex-center">
-                    <i class="fas fa-clock"></i>
-                    15min
-                </div>
-                <div class="card-difficulty flex-center;">
-                    <div>medium</div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <div class="card">
-        <img class="card-img-top" src="pexels-any-lane-5945747.jpg" alt="Card image cap">
-        <div class="card-body flex-column">
-            <h5 class="card-title">Card title</h5>
-            <div class="card-infos flex-center">
-                <div class="card-rating flex-center">
-                    <img src="chef.png" alt="">
-                    <img src="chef.png" alt="">
-                    <img src="chef.png" alt="">
-                    <img src="chef.png" alt="">
-                    <img src="chef.png" alt="">
-                </div>
-                <div class="card-duration flex-center">
-                    <i class="fas fa-clock"></i>
-                    15min
-                </div>
-                <div class="card-difficulty flex-center;">
-                    <div>medium</div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <div class="card">
-        <img class="card-img-top" src="pexels-any-lane-5945747.jpg" alt="Card image cap">
-        <div class="card-body flex-column">
-            <h5 class="card-title">Card title</h5>
-            <div class="card-infos flex-center">
-                <div class="card-rating flex-center">
-                    <img src="chef.png" alt="">
-                    <img src="chef.png" alt="">
-                    <img src="chef.png" alt="">
-                    <img src="chef.png" alt="">
-                    <img src="chef.png" alt="">
-                </div>
-                <div class="card-duration flex-center">
-                    <i class="fas fa-clock"></i>
-                    15min
-                </div>
-                <div class="card-difficulty flex-center;">
-                    <div>medium</div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <div class="card">
-        <img class="card-img-top" src="pexels-any-lane-5945747.jpg" alt="Card image cap">
-        <div class="card-body flex-column">
-            <h5 class="card-title">Card title</h5>
-            <div class="card-infos flex-center">
-                <div class="card-rating flex-center">
-                    <img src="chef.png" alt="">
-                    <img src="chef.png" alt="">
-                    <img src="chef.png" alt="">
-                    <img src="chef.png" alt="">
-                    <img src="chef.png" alt="">
-                </div>
-                <div class="card-duration flex-center">
-                    <i class="fas fa-clock"></i>
-                    15min
-                </div>
-                <div class="card-difficulty flex-center;">
-                    <div>medium</div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <div class="card">
-        <img class="card-img-top" src="pexels-any-lane-5945747.jpg" alt="Card image cap">
-        <div class="card-body flex-column">
-            <h5 class="card-title">Card title</h5>
-            <div class="card-infos flex-center">
-                <div class="card-rating flex-center">
-                    <img src="chef.png" alt="">
-                    <img src="chef.png" alt="">
-                    <img src="chef.png" alt="">
-                    <img src="chef.png" alt="">
-                    <img src="chef.png" alt="">
-                </div>
-                <div class="card-duration flex-center">
-                    <i class="fas fa-clock"></i>
-                    15min
-                </div>
-                <div class="card-difficulty flex-center;">
-                    <div>medium</div>
-                </div>
-            </div>
-        </div>
     </div>
 </div>
 
@@ -491,5 +115,5 @@
     // wide screen - width ca 80% of category cont -- maybe whole cont (lines etc)
     
 </script> -->
-    
+
 {% endblock %}

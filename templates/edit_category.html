@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block content %}
+
+<!-- Main Container Edit Category -->
+<div class="main-cont-login category flex-center flex-column">
+    <div class="container">
+        <!-- Edit Category Form -->
+        <div id="sign-in-cont" class="sign-up-cont sign-in-cont categories">
+            <form method="POST" action="{{ url_for('edit_category', category_id=category._id) }}" class="flex-center caterory">
+                <!-- Left Side Edit Category -->
+                <div class="sign-left-side edit-category">
+                    <h5>Edit Category</h5>
+                    <!-- Image (Food Plate) -->
+                    <img src="{{ url_for('static', filename='img/chickenplate.png')}}" alt="plate with food">
+                </div>
+                <!-- Right Side Edit Categories (Inputs) -->
+                <div class="sign-right-side edit-category">
+                    <!-- Category Name -->
+                    <div class="data-input">
+                        <input id="category_name" name="category_name" type="text" minlength="2" maxlength="8" value="{{ category['category_name']|capitalize }}" required>
+                        <div class="input-underline"></div>
+                        <label for="category_name">CATEGORY NAME</label>
+                    </div>
+                    <!-- Category Image Link -->
+                    <div class="data-input">
+                        <input id="category_png" name="category_png" type="text" minlength="2" value="{{ category['category_png'] }}" required>
+                        <div class="input-underline"></div>
+                        <label for="category_png">CATEGORY IMAGE</label>
+                    </div>
+                    <!-- Submit Changes To Category BUTTON -->
+                    <div class="sign-btn-cont">
+                        <button type="submit" class="sign-btn edit-category">
+                            Edit <i class="fas fa-pencil-alt"></i>
+                        </button>
+                        <!-- Switch Back To Manage Categories -->
+                        <a href="{{ url_for('categories') }}" class="to-sign-up-btn">
+                            or <span style="color: #E7B74A; font-weight: 800">Go Back</span>
+                        </a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

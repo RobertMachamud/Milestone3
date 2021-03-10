@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% block content %}
+
+<!-- Main Container Registration/Login -->
+<div class="main-cont-login flex-center flex-column">
+    <!-- Registration / Sign Up FORM -->
+    <div id="sign-up-cont" class="sign-up-cont">
+        <form method="POST" action="{{ url_for('edit_profile',  user_id=user._id) }}" class="flex-center">
+            <!-- Left Side Sign Up -->
+            <div class="sign-left-side mod-profile">
+                <!-- Image (Food Plate) -->
+                <img id="profile-img" src="{{ url_for('static', filename='img/chef_profile.png') }}" alt="profile picture">
+                <h5>Edit Profile</h5>
+            </div>
+            <!-- Right Side Sign Up (Inputs) -->
+            <div class="sign-right-side">
+                <!-- Full Name -->
+                <div class="data-input">
+                    <input id="edit_name" name="edit_name" min-length="4" maxlength="25" type="text" value="{{ user.name|title }}" required>
+                    <div class="input-underline"></div>
+                    <label for="edit_name">FULL NAME</label>
+                </div>
+                <!-- Username -->
+                <div class="data-input">
+                    <input id="edit_username" name="edit_username" type="text" pattern="^[a-zA-Z0-9]{5,15}$" value="{{ user.username|capitalize  }}" required>
+                    <div class="input-underline"></div>
+                    <label for="edit_username">USERNAME</label>
+                </div>
+                <!-- Password -->
+                <div class="data-input">
+                    <input id="edit_password" name="edit_password" minlength="5" maxlenght="15" type="password" value="" placeholder="Enter Your New Password">
+                    <div class="input-underline"></div>
+                    <label for="edit_password">PASSWORD</label>
+                </div>
+                <!-- Email -->
+                <div class="data-input">
+                    <input id="edit_email" name="edit_email" type="email" value="{{ user.email }}" required>
+                    <div class="input-underline"></div>
+                    <label for="edit_email">MY EMAIL</label>
+                </div>
+                <!-- Cooking Level (Radio Input) -->
+                <div class="level-radios-cont d-flex justify-content-center" style="margin: -.5em 0 -1.5em 0">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="edit_level" id="edit_beginner" value="beginner" checked>
+                        <label class="form-check-label" for="edit_beginner">Beginner</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="edit_level" id="edit_advanced" value="advanced">
+                        <label class="form-check-label" for="edit_advanced">Advanced</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="edit_level" id="edit_professional" value="professional">
+                        <label class="form-check-label" for="edit_professional">
+                            Professional
+                        </label>
+                    </div>
+                </div>
+                <!-- Date Of Birth -->
+                <div class="data-input">
+                    <input id="edit_dob" name="edit_dob" type="date" value="{{ user.dob }}" required>
+                    <div class="input-underline"></div>
+                    <label for="edit_dob">DATE OF BIRTH</label>
+                </div>
+                <!-- Profile Image (Input) -->
+                <div class="data-input">
+                    <div class="input-underline"></div>
+                    <label for="edit_img">SELECT IMAGE</label>
+                    <input type="file" id="edit__img" name="edit__img" accept="image/*">
+                    <div class="img-icon"><i class="fas fa-camera"></i></div>
+                </div>
+                <!-- About User (Textarea) -->
+                <div class="form-group" style="margin: -1em auto 2em auto; width: 80%;">
+                    <label class="about-label" for="edit_about">ABOUT ME</label><br>
+                    <textarea id="edit_about" name="edit_about" class="about-txt-area" class="form-control" rows="3" minlength="10"
+                        maxlength="250" required>{{ user.about|capitalize|trim }}</textarea>
+                </div>
+                <!-- Sign Up Submit BUTTON Container -->
+                <div class="sign-btn-cont flex-center">
+                    <button type="submit" class="sign-btn mod-profile">Save Changes</button>
+                    <button class="sign-btn back-to-profile-btn">
+                        <a href="{{ url_for('profile', username=session['user']) }}">Back To Profile<i class="fas fa-times"
+                                style="margin-left: 10px; transform: translateY(1px)"></i></a>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
