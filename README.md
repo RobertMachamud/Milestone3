@@ -289,7 +289,8 @@ Click <a href="https://help.github.com/en/github/creating-cloning-and-archiving-
   - Tutor support at Code Institute for their support.
 
 
-
+## Note
+  - I know I could have used Bootstrap for better responsiveness but I intentionally chose to use css to learn more 
 
 
 

@@ -4,7 +4,7 @@
 <div class="main-cont-create flex-center flex-column">
     <div class="container">
         <!-- Create Recipe Container -->
-        <form method="POST" action="" class="create-recipe-cont">
+        <form method="POST" action="{{ url_for('add_recipe') }}" class="create-recipe-cont">
             <!-- Create Recipe Steps BUTTONS Container -->
             <div class="create-steps-cont flex-center no-marking">
                 <div onclick="changeCreateRecipeTab(event)" class="create-step flex-center active" data-tab="ingredients-section">Ingredients</div>
@@ -17,7 +17,7 @@
                 <div class="flex-center" style="justify-content: space-between; flex-wrap: wrap">
                     <!-- Recipe Name (Input) -->
                     <div class="data-input">
-                        <input id="recipe_name" name="recipe_name" min-length="4" maxlength="25" type="text" required>
+                        <input id="recipe_name" name="recipe_name" min-length="4" maxlength="40" type="text" required>
                         <div class="input-underline recipe-name"></div>
                         <label for="recipe_name">RECIPE NAME</label>
                     </div>
@@ -45,17 +45,17 @@
                     <!-- Ingredients - Amount/Unit/Ingredient (Inputs) -->
                     <div class="ingredient-inputs flex-center">
                         <div class="data-input amount">
-                            <input name="recipe_amount_1" type="number" min="0" required>
+                            <input name="recipe_amount_1" type="number" min="0">
                             <div class="input-underline"></div>
                             <label for="recipe_amount">AMOUNT</label>
                         </div>
                         <div class="data-input unit">
-                            <input name="recipe_unit_1" min-length="1" maxlength="11" type="text" required>
+                            <input name="recipe_unit_1" min-length="1" maxlength="11" type="text">
                             <div class="input-underline"></div>
                             <label for="recipe_unit">UNIT</label>
                         </div>
                         <div class="data-input ingredient">
-                            <input name="recipe_ingredient_1" min-length="4" maxlength="25" type="text" required>
+                            <input name="recipe_ingredient_1" min-length="4" maxlength="25" type="text">
                             <div class="input-underline"></div>
                             <label for="recipe_ingredient">INGREDIENT</label>
                         </div>
@@ -65,17 +65,17 @@
                     </div>
                     <div class="ingredient-inputs flex-center">
                         <div class="data-input amount">
-                            <input name="recipe_amount_2" type="number" min="0" required>
+                            <input name="recipe_amount_2" type="number" min="0">
                             <div class="input-underline"></div>
                             <label for="recipe_amount">AMOUNT</label>
                         </div>
                         <div class="data-input unit">
-                            <input name="recipe_unit_2" min-length="1" maxlength="11" type="text" required>
+                            <input name="recipe_unit_2" min-length="1" maxlength="11" type="text">
                             <div class="input-underline"></div>
                             <label for="recipe_unit">UNIT</label>
                         </div>
                         <div class="data-input ingredient">
-                            <input name="recipe_ingredient_2" min-length="4" maxlength="25" type="text" required>
+                            <input name="recipe_ingredient_2" min-length="4" maxlength="25" type="text">
                             <div class="input-underline"></div>
                             <label for="recipe_ingredient">INGREDIENT</label>
                         </div>
@@ -85,17 +85,17 @@
                     </div>
                     <div class="ingredient-inputs flex-center">
                         <div class="data-input amount">
-                            <input name="recipe_amount_3" type="number" min="0" required>
+                            <input name="recipe_amount_3" type="number" min="0">
                             <div class="input-underline"></div>
                             <label for="recipe_amount">AMOUNT</label>
                         </div>
                         <div class="data-input unit">
-                            <input name="recipe_unit_3" min-length="1" maxlength="11" type="text" required>
+                            <input name="recipe_unit_3" min-length="1" maxlength="11" type="text">
                             <div class="input-underline"></div>
                             <label for="recipe_unit">UNIT</label>
                         </div>
                         <div class="data-input ingredient">
-                            <input name="recipe_ingredient_3" min-length="4" maxlength="25" type="text" required>
+                            <input name="recipe_ingredient_3" min-length="4" maxlength="25" type="text">
                             <div class="input-underline"></div>
                             <label for="recipe_ingredient">INGREDIENT</label>
                         </div>
@@ -118,13 +118,13 @@
                     </div>
                     <!-- Hours (Input) -->
                     <div class="data-input">
-                        <input id="hours" name="hours" type="number">
+                        <input id="hours" name="hours" value="0" min="0" max="99" type="number">
                         <div class="input-underline"></div>
                         <label for="hours">HOURS</label>
                     </div>
                     <!-- Minutes (Input) -->
                     <div class="data-input">
-                        <input id="minutes" name="minutes" type="number" max="60" required>
+                        <input id="minutes" name="minutes" type="number" min="0" max="60" required>
                         <div class="input-underline"></div>
                         <label for="minutes">MINUTES</label>
                     </div>

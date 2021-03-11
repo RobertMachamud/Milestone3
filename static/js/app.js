@@ -155,17 +155,17 @@ const addThreeIngredientInputs = () => {
     ingredientsCont.insertAdjacentHTML("beforeend", `
         <div class="ingredient-inputs flex-center">
             <div class="data-input amount">
-                <input name="recipe_amount_0" type="number" min="0" required>
+                <input name="recipe_amount_0" type="number" min="0">
                 <div class="input-underline"></div>
                 <label for="recipe_amount">AMOUNT</label>
             </div>
             <div class="data-input unit">
-                <input name="recipe_unit_0" min-length="1" maxlength="11" type="text" required>
+                <input name="recipe_unit_0" min-length="1" maxlength="11" type="text">
                 <div class="input-underline"></div>
                 <label for="recipe_unit">UNIT</label>
             </div>
             <div class="data-input ingredient">
-                <input name="recipe_ingredient_0" min-length="4" maxlength="25" type="text" required>
+                <input name="recipe_ingredient_0" min-length="4" maxlength="25" type="text">
                 <div class="input-underline"></div>
                 <label for="recipe_ingredient">INGREDIENT</label>
             </div>
@@ -176,17 +176,17 @@ const addThreeIngredientInputs = () => {
         
         <div class="ingredient-inputs flex-center">
             <div class="data-input amount">
-                <input name="recipe_amount_0" type="number" min="0" required>
+                <input name="recipe_amount_0" type="number" min="0">
                 <div class="input-underline"></div>
                 <label for="recipe_amount">AMOUNT</label>
             </div>
             <div class="data-input unit">
-                <input name="recipe_unit_0" min-length="1" maxlength="11" type="text" required>
+                <input name="recipe_unit_0" min-length="1" maxlength="11" type="text">
                 <div class="input-underline"></div>
                 <label for="recipe_unit">UNIT</label>
             </div>
             <div class="data-input ingredient">
-                <input name="recipe_ingredient_0" min-length="4" maxlength="25" type="text" required>
+                <input name="recipe_ingredient_0" min-length="4" maxlength="25" type="text">
                 <div class="input-underline"></div>
                 <label for="recipe_ingredient">INGREDIENT</label>
             </div>
@@ -197,17 +197,17 @@ const addThreeIngredientInputs = () => {
         
         <div class="ingredient-inputs flex-center">
             <div class="data-input amount">
-                <input name="recipe_amount_0" type="number" min="0" required>
+                <input name="recipe_amount_0" type="number" min="0">
                 <div class="input-underline"></div>
                 <label for="recipe_amount">AMOUNT</label>
             </div>
             <div class="data-input unit">
-                <input name="recipe_unit_0" min-length="1" maxlength="11" type="text" required>
+                <input name="recipe_unit_0" min-length="1" maxlength="11" type="text">
                 <div class="input-underline"></div>
                 <label for="recipe_unit">UNIT</label>
             </div>
             <div class="data-input ingredient">
-                <input name="recipe_ingredient_0" min-length="4" maxlength="25" type="text" required>
+                <input name="recipe_ingredient_0" min-length="4" maxlength="25" type="text">
                 <div class="input-underline"></div>
                 <label for="recipe_ingredient">INGREDIENT</label>
             </div>

@@ -158,16 +158,36 @@ def clicked_recipe():
 
 @app.route("/add_recipe", methods=["GET", "POST"])
 def add_recipe():
+
     if request.method == "POST":
+        ingredient_count = 0
+        ingredients = []
+
+        while True:
+            if f'recipe_ingredient_{ingredient_count}' in request.form:
+                ingredient = {
+                    "amount": request.form.get(
+                        f'recipe_amount_{ingredient_count}'),
+                    "unit": request.form.get(
+                        f'recipe_unit_{ingredient_count}'),
+                    "ingredient": request.form.get(
+                        f'recipe_ingredient_{ingredient_count}'),
+                }
+                ingredients.append(ingredient)
+                ingredient_count += 1
+            else:
+                break
+
         recipe = {
             "recipe_name": request.form.get("recipe_name"),
             "difficulty": request.form.get("difficulty"),
-            "ingredients": request.form.get("ingredients"),
+            "ingredients": ingredients,
             "duration_h": request.form.get("duration_h"),
             "duration_min": request.form.get("duration_min"),
-            "prep_steps": request.form.get("prep_steps"),
+            # ?
+            # "prep_steps": request.form.get("prep_steps"),
             "category": request.form.get("category"),
-            "recipe_img": request.form.get("recipe_img"),
+            # "recipe_img": request.form.get("recipe_img"),
             "created_by": session["user"],
             "rating": 0
         }
@@ -182,7 +202,9 @@ def add_recipe():
 
 @app.route("/my_recipes")
 def my_recipes():
-    return render_template("my_recipes.html")
+
+    my_recipes = recipes = list(mongo.db.recipes.find())
+    return render_template("my_recipes.html", my_recipes=my_recipes)
 
 
 @app.route("/edit_recipe")
