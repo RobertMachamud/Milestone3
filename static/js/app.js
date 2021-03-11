@@ -136,6 +136,7 @@ const removeIngredient = e => {
     if (e.target.parentElement.parentElement.classList.contains("ingredient-inputs")) {
         e.target.parentElement.parentElement.remove();
     }
+    updateInputNames();
 }
 
 
@@ -215,9 +216,11 @@ const addThreeIngredientInputs = () => {
             </button>
         </div>
     `);
+    updateInputNames();
 }
 
 
+// 
 const updateInputNames = () => {
     const allInputConts = document.querySelectorAll(".ingredient-inputs");
 
