@@ -154,19 +154,19 @@ const addThreeIngredientInputs = () => {
     ingredientsCont.insertAdjacentHTML("beforeend", `
         <div class="ingredient-inputs flex-center">
             <div class="data-input amount">
-                <input id="name" name="name" type="number" required>
+                <input name="recipe_amount_0" type="number" min="0" required>
                 <div class="input-underline"></div>
-                <label for="name">AMOUNT</label>
+                <label for="recipe_amount">AMOUNT</label>
             </div>
             <div class="data-input unit">
-                <input id="name" name="name" min-length="1" maxlength="11" type="text" required>
+                <input name="recipe_unit_0" min-length="1" maxlength="11" type="text" required>
                 <div class="input-underline"></div>
-                <label for="name">UNIT</label>
+                <label for="recipe_unit">UNIT</label>
             </div>
             <div class="data-input ingredient">
-                <input id="name" name="name" min-length="4" maxlength="25" type="text" required>
+                <input name="recipe_ingredient_0" min-length="4" maxlength="25" type="text" required>
                 <div class="input-underline"></div>
-                <label for="name">INGREDIENT</label>
+                <label for="recipe_ingredient">INGREDIENT</label>
             </div>
             <button onclick="removeIngredient(event)" class="remove-ingredient-btn">
                 <i class="fas fa-times"></i>
@@ -175,46 +175,59 @@ const addThreeIngredientInputs = () => {
         
         <div class="ingredient-inputs flex-center">
             <div class="data-input amount">
-                <input id="name" name="name" type="number" required>
+                <input name="recipe_amount_0" type="number" min="0" required>
                 <div class="input-underline"></div>
-                <label for="name">AMOUNT</label>
+                <label for="recipe_amount">AMOUNT</label>
             </div>
             <div class="data-input unit">
-                <input id="name" name="name" min-length="1" maxlength="11" type="text" required>
+                <input name="recipe_unit_0" min-length="1" maxlength="11" type="text" required>
                 <div class="input-underline"></div>
-                <label for="name">UNIT</label>
+                <label for="recipe_unit">UNIT</label>
             </div>
             <div class="data-input ingredient">
-                <input id="name" name="name" min-length="4" maxlength="25" type="text" required>
+                <input name="recipe_ingredient_0" min-length="4" maxlength="25" type="text" required>
                 <div class="input-underline"></div>
-                <label for="name">INGREDIENT</label>
+                <label for="recipe_ingredient">INGREDIENT</label>
             </div>
-            <button onclick="removeIngredient(event)"  class="remove-ingredient-btn">
+            <button onclick="removeIngredient(event)" class="remove-ingredient-btn">
                 <i class="fas fa-times"></i>
             </button>
         </div>
         
         <div class="ingredient-inputs flex-center">
             <div class="data-input amount">
-                <input id="name" name="name" type="number" required>
+                <input name="recipe_amount_0" type="number" min="0" required>
                 <div class="input-underline"></div>
-                <label for="name">AMOUNT</label>
+                <label for="recipe_amount">AMOUNT</label>
             </div>
             <div class="data-input unit">
-                <input id="name" name="name" min-length="1" maxlength="11" type="text" required>
+                <input name="recipe_unit_0" min-length="1" maxlength="11" type="text" required>
                 <div class="input-underline"></div>
-                <label for="name">UNIT</label>
+                <label for="recipe_unit">UNIT</label>
             </div>
             <div class="data-input ingredient">
-                <input id="name" name="name" min-length="4" maxlength="25" type="text" required>
+                <input name="recipe_ingredient_0" min-length="4" maxlength="25" type="text" required>
                 <div class="input-underline"></div>
-                <label for="name">INGREDIENT</label>
+                <label for="recipe_ingredient">INGREDIENT</label>
             </div>
-            <button onclick="removeIngredient(event)"  class="remove-ingredient-btn">
+            <button onclick="removeIngredient(event)" class="remove-ingredient-btn">
                 <i class="fas fa-times"></i>
             </button>
         </div>
     `);
+}
+
+
+const updateInputNames = () => {
+    const allInputConts = document.querySelectorAll(".ingredient-inputs");
+
+    allInputConts.forEach((inputCont, index) => {
+        let inputs = $($('.ingredient-inputs')[index]).find(':input');
+
+        [...inputs].forEach((input) => {
+            input.name = input.name.slice(0, -1) + index;
+        });
+    });
 }
 
 

@@ -589,7 +589,17 @@ header
  
 /* ---------------------------------------------------------- MEDIA QUERIES */
 
-/* 1200px */
+/* > 1900px */
+@media only screen and (min-width: 1900px)
+{
+    .circle .food-shadow
+    {
+        width: 55%;
+    }
+}
+
+
+/* < 1200px */
 @media only screen and (max-width: 1200px)
 {
     .content
@@ -599,6 +609,7 @@ header
 }
 
 
+/* < 1000px */
 @media only screen and (max-width: 1000px)
 {
     .content
@@ -608,7 +619,7 @@ header
 }
 
 
-/* 950px */
+/* < 950px */
 @media only screen and (max-width: 950px)
 {
     .navbar nav ul li
@@ -628,7 +639,7 @@ header
 }
 
 
-/* min 769px */
+/* > 769px */
 @media only screen and (min-width: 769px)
 {
     .only-visible-on-tablet
@@ -699,6 +710,7 @@ header
 }
 
 
+/* Landscape < 850px width */
 @media (orientation: landscape) and (max-width: 850px)
 {
     .food-shadow
@@ -726,6 +738,7 @@ header
 }
 
 
+/* Landscape < 350px height, < 850px width */
 @media (orientation: landscape) and (max-height: 350px) and (max-width: 850px)
 {
     .main-content .content
@@ -2673,8 +2686,12 @@ input[type="date"]
         {
             position: relative;
             align-items: flex-start;
-            width: 35%;
             margin-bottom: 2.5em;
+        }
+
+        .ingredients-cont.persons
+        {
+            width: 35%;
         }
         
 /* For How Many Persons Container */
