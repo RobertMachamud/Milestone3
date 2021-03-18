@@ -41,11 +41,37 @@
                 </div>
                 <!-- Ingredients Container (Inputs) -->
                 <div class="ingredients-cont">
-                    <h3> <img class="headline-icon" src="{{ url_for('static', filename='img/clipboard.png') }}" alt=""> Ingredients</h3>
+                    <h3><img class="headline-icon" src="{{ url_for('static', filename='img/clipboard.png') }}" alt="clipboard icon">Ingredients</h3>
+                    <!-- For how many Persons (Input) -->
+                    <div class="data-input amount persons">
+                            <input id="persons" name="persons" type="number" min="0" required>
+                            <div class="input-underline"></div>
+                            <label for="persons">PERSONS</label>
+                        </div>
                     <!-- Ingredients - Amount/Unit/Ingredient (Inputs) -->
                     <div class="ingredient-inputs flex-center">
                         <div class="data-input amount">
-                            <input name="recipe_amount_1" type="number" min="0">
+                            <input name="recipe_amount_0" type="number" min="0" step="0.5">
+                            <div class="input-underline"></div>
+                            <label for="recipe_amount">AMOUNT</label>
+                        </div>
+                        <div class="data-input unit">
+                            <input name="recipe_unit_0" min-length="1" maxlength="11" type="text">
+                            <div class="input-underline"></div>
+                            <label for="recipe_unit">UNIT</label>
+                        </div>
+                        <div class="data-input ingredient">
+                            <input name="recipe_ingredient_0" min-length="4" maxlength="25" type="text">
+                            <div class="input-underline"></div>
+                            <label for="recipe_ingredient">INGREDIENT</label>
+                        </div>
+                        <button type="button" onclick="removeIngredient(event)" class="remove-ingredient-btn">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    <div class="ingredient-inputs flex-center">
+                        <div class="data-input amount">
+                            <input name="recipe_amount_1" type="number" min="0" step="0.5">
                             <div class="input-underline"></div>
                             <label for="recipe_amount">AMOUNT</label>
                         </div>
@@ -59,13 +85,13 @@
                             <div class="input-underline"></div>
                             <label for="recipe_ingredient">INGREDIENT</label>
                         </div>
-                        <button onclick="removeIngredient(event)" class="remove-ingredient-btn">
+                        <button type="button" onclick="removeIngredient(event)" class="remove-ingredient-btn">
                             <i class="fas fa-times"></i>
                         </button>
                     </div>
                     <div class="ingredient-inputs flex-center">
                         <div class="data-input amount">
-                            <input name="recipe_amount_2" type="number" min="0">
+                            <input name="recipe_amount_2" type="number" min="0" step="0.5">
                             <div class="input-underline"></div>
                             <label for="recipe_amount">AMOUNT</label>
                         </div>
@@ -79,33 +105,13 @@
                             <div class="input-underline"></div>
                             <label for="recipe_ingredient">INGREDIENT</label>
                         </div>
-                        <button onclick="removeIngredient(event)" class="remove-ingredient-btn">
-                            <i class="fas fa-times"></i>
-                        </button>
-                    </div>
-                    <div class="ingredient-inputs flex-center">
-                        <div class="data-input amount">
-                            <input name="recipe_amount_3" type="number" min="0">
-                            <div class="input-underline"></div>
-                            <label for="recipe_amount">AMOUNT</label>
-                        </div>
-                        <div class="data-input unit">
-                            <input name="recipe_unit_3" min-length="1" maxlength="11" type="text">
-                            <div class="input-underline"></div>
-                            <label for="recipe_unit">UNIT</label>
-                        </div>
-                        <div class="data-input ingredient">
-                            <input name="recipe_ingredient_3" min-length="4" maxlength="25" type="text">
-                            <div class="input-underline"></div>
-                            <label for="recipe_ingredient">INGREDIENT</label>
-                        </div>
-                        <button onclick="removeIngredient(event)" class="remove-ingredient-btn">
+                        <button type="button" onclick="removeIngredient(event)" class="remove-ingredient-btn">
                             <i class="fas fa-times"></i>
                         </button>
                     </div>
                 </div>
                 <!-- Add Three More Ingredients Inputs - BUTTON -->
-                <button onclick="addThreeIngredientInputs()" class="add-ingredients-input-btn">
+                <button type="button" onclick="addThreeIngredientInputs()" class="add-ingredients-input-btn">
                     <i class="fas fa-plus"></i>
                 </button>
             </div>
@@ -114,61 +120,61 @@
                 <!-- Duration -->
                 <div class="duration-cont flex-center">
                     <div class="duration-icon">
-                        <img src="{{ url_for('static', filename='img/sand-clock.png') }}" alt="">
+                        <img src="{{ url_for('static', filename='img/sand-clock.png') }}" alt="clock icon">
                     </div>
                     <!-- Hours (Input) -->
                     <div class="data-input">
-                        <input id="hours" name="hours" value="0" min="0" max="99" type="number">
+                        <input id="duration_h" name="duration_h" value="0" min="0" max="99" type="number">
                         <div class="input-underline"></div>
-                        <label for="hours">HOURS</label>
+                        <label for="duration_h">HOURS</label>
                     </div>
                     <!-- Minutes (Input) -->
                     <div class="data-input">
-                        <input id="minutes" name="minutes" type="number" min="0" max="60" required>
+                        <input id="duration_min" name="duration_min" type="number" min="0" max="60" required>
                         <div class="input-underline"></div>
-                        <label for="minutes">MINUTES</label>
+                        <label for="duration_min">MINUTES</label>
                     </div>
                 </div>
                 <p>
                     Hier kannst du beschreiben, welche Schritte für die Zubereitung des Rezeptes notwendig sind. Bitte achte darauf, dass alle relevanten Informationen enthalten sind, z.B. Angaben zur Temperatur des Backofens und dass alle von dir aufgeführten Zutaten enthalten sind.
                 </p>
                 <div class="preparation-icon flex-center">
-                    <img src="{{ url_for('static', filename='img/whisk-and-bowl.png') }}" alt="">
+                    <img src="{{ url_for('static', filename='img/whisk-and-bowl.png') }}" alt="bowl icon">
                     <h3>Preparation Step By Step</h3>
                 </div>
                 <!-- Preparation Container (Textareas) -->
                 <div class="preparation flex-center">
                     <div class="form-group preparation-txtarea">
-                        <button onclick="removePreparationStep(event)" class="delete-preparation-txtarea-btn">
+                        <button type="button" onclick="removePreparationStep(event)" class="delete-preparation-txtarea-btn">
                             <i class="fas fa-times"></i>
                         </button>
-                        <label class="about-label" for="prep_step">PREPARATION STEP</label><br>
-                        <textarea name="prep_step" class="about-txt-area" class="form-control" rows="3" maxlength="250"></textarea>
+                        <label class="about-label prep-label" for="prep_step_1">PREPARATION STEP 1</label><br>
+                        <textarea name="prep_step_1" class="about-txt-area prep-step form-control" rows="3" maxlength="250"></textarea>
                     </div>
                     <div class="form-group preparation-txtarea">
-                        <button onclick="removePreparationStep(event)" class="delete-preparation-txtarea-btn">
+                        <button type="button" onclick="removePreparationStep(event)" class="delete-preparation-txtarea-btn">
                             <i class="fas fa-times"></i>
                         </button>
-                        <label class="about-label" for="prep_step">PREPARATION STEP</label><br>
-                        <textarea name="prep_step" class="about-txt-area" class="form-control" rows="3" maxlength="250"></textarea>
+                        <label class="about-label prep-label" for="prep_step_2">PREPARATION STEP 2</label><br>
+                        <textarea name="prep_step_2" class="about-txt-area prep-step form-control" rows="3" maxlength="250"></textarea>
                     </div>
                     <div class="form-group preparation-txtarea">
-                        <button onclick="removePreparationStep(event)" class="delete-preparation-txtarea-btn">
+                        <button type="button" onclick="removePreparationStep(event)" class="delete-preparation-txtarea-btn">
                             <i class="fas fa-times"></i>
                         </button>
-                        <label class="about-label" for="prep_step">PREPARATION STEP</label><br>
-                        <textarea name="prep_step" class="about-txt-area" class="form-control" rows="3" maxlength="250"></textarea>
+                        <label class="about-label prep-label" for="prep_step_3">PREPARATION STEP 3</label><br>
+                        <textarea name="prep_step_3" class="about-txt-area prep-step form-control" rows="3" maxlength="250"></textarea>
                     </div>
                     <div class="form-group preparation-txtarea">
-                        <button onclick="removePreparationStep(event)" class="delete-preparation-txtarea-btn">
+                        <button type="button" onclick="removePreparationStep(event)" class="delete-preparation-txtarea-btn">
                             <i class="fas fa-times"></i>
                         </button>
-                        <label class="about-label" for="prep_step">PREPARATION STEP</label><br>
-                        <textarea name="prep_step" class="about-txt-area" class="form-control" rows="3" maxlength="250"></textarea>
+                        <label class="about-label prep-label" for="prep_step_4">PREPARATION STEP 4</label><br>
+                        <textarea name="prep_step_4" class="about-txt-area prep-step form-control" rows="3" maxlength="250"></textarea>
                     </div>
                 </div>
                 <!-- Add Two More Preparatino Steps Textareas - BUTTON -->
-                <button onclick="addTwoPreparatrionTxtareas()" class="add-ingredients-input-btn add-preparation-txt-area-btn">
+                <button type="button" onclick="addTwoPreparatrionTxtareas()" class="add-ingredients-input-btn add-preparation-txt-area-btn">
                     <i class="fas fa-plus"></i>
                 </button>
             </div>
@@ -176,26 +182,32 @@
             <div class="categories-section create-section hidden">
                 <div class="flex-center" style="justify-content: space-between; width: 100%;">
                     <!-- Select Categoie -->
-                    <select class="form-select form-select-lg mb-3 select-category" aria-label=".form-select-lg example">
+                    <select name="category" class="form-select form-select-lg mb-3 select-category" aria-label=".form-select-lg example" required>
                         <option selected>Select a category for your recipe</option>
 
                         {% for category in categories %}
 
-                            <option>{{ category.category_name|capitalize }}</option>
+                            <option value="{{ category.category_name }}">{{ category.category_name|capitalize }}</option>
 
                         {% endfor %}
 
                     </select>
-                    <h3><img class="headline-icon" src="{{ url_for('static', filename='img/food.png') }}" alt=""> Category For Your Recipe</h3>
+                    <h3><img class="headline-icon" src="{{ url_for('static', filename='img/food.png') }}" alt="food bowl icon"> Category For Your Recipe</h3>
                 </div>
             </div>
             <!-- Recipe Image and Submit Seciton -->
             <div class="recipe-image-section create-section hidden">
+                <div id="recipe-img-cont" class="data-input">
+                    <input id="recipe_img" name="recipe_img" minlength="2" type="text" placeholder="Use a Link" required>
+                    <div class="input-underline"></div>
+                    <label for="recipe_img">RECIPE IMAGE</label>
+                </div>
+
                 <!-- Drag & Drop for Images Container -->
                 <div id="dropFileForm">
-                    <input type="file" name="recipe_img" id="recipe_img" multiple onchange="addFiles(event)">
+                    <input type="file" name="recipe_drag_img" id="recipe_drag_img" multiple onchange="addFiles(event)">
                     <!--  Label for Drag & Drop Cont -->
-                    <label for="recipe_img" id="fileLabel" ondragover="overrideDefault(event);fileHover();" ondragenter="overrideDefault(event);fileHover();" ondragleave="overrideDefault(event);fileHoverEnd();" ondrop="overrideDefault(event);fileHoverEnd(); addFiles(event);">
+                    <label for="recipe_drag_img" id="fileLabel" ondragover="overrideDefault(event);fileHover();" ondragenter="overrideDefault(event);fileHover();" ondragleave="overrideDefault(event);fileHoverEnd();" ondrop="overrideDefault(event);fileHoverEnd(); addFiles(event);">
                         <!-- Icon -->
                         <i class="fa fa-download fa-5x"></i>
                         <br>
@@ -206,7 +218,7 @@
                         <br>
                     </label>
                     <!-- Submit Form BUTTON -->
-                    <button type="submit" class="uploadButton">
+                    <button onclick="beforeSubmitRecipe()" type="submit" class="uploadButton">
                         <i class="fas fa-check" style="margin-right: 3px"></i>
                         Upload Your Recipe
                     </button>

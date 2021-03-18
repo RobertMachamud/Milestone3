@@ -6,21 +6,27 @@
     <div class="recipe-cont container">
         <!-- Top Sectition -->
         <div class="recipe-top-section flex-center">
-            <div class="recipe-info-cont">
+            <form method="POST" action="{{ url_for('save_recipe', recipe_id=recipe._id) }}" class="recipe-info-cont">
                 <!-- Recipe Name -->
-                <h2 class="recipe-name">Pancakes American Style for Vegans and Vegetarians (Gluten Free) </h2>
+                <h2 class="recipe-name">{{ recipe["recipe_name"]|title }}</h2>
                 <div class="underline-recipe"></div>
                 <!-- Username -->
-                <div class="recipe-username"><i class="far fa-user"></i>RobertCook</div>
+                <div class="recipe-username"><i class="far fa-user"></i>{{ recipe["created_by"]|capitalize }}</div>
                 <div class="rating-nr">ratings: 489</div>
                 <!-- Recipe Rating Container -->
                 <div class="flex-center">
                     <div class="card-rating flex-center">
-                        <img src="chef.png" alt="">
-                        <img src="chef.png" alt="">
-                        <img src="chef.png" alt="">
-                        <img src="chef.png" alt="">
-                        <img src="chef%20(3).png" alt="">
+
+                        {% set rate = recipe['rating'] %}
+                        {% set no_rate = 5 - recipe['rating'] %}
+
+                        {% for rating in range(rate) %}
+                            <img src="{{ url_for('static', filename='img/chef.png') }}" alt="chef hat icon">
+                        {% endfor %}
+                        {% for no_rating in range (no_rate) %}
+                            <img src="{{ url_for('static', filename='img/chefgray.png') }}" alt="gray chef hat icon">
+                        {% endfor %}
+
                     </div>
                     <!-- Favorite Recipe BUTTON -->
                     <button class="fav-recipe-btn">
@@ -31,23 +37,36 @@
                 <div class="flex-center">
                     <div class="card-duration flex-center">
                         <i class="fas fa-clock"></i>
-                        39min
+                        {{ recipe["duration_h"] }}h 
+                        {{ recipe["duration_min"] }}min
                     </div>
                     <span>difficulty:</span>
                     <div class="card-difficulty flex-center">
-                        <div>easy</div>
+                        <div>{{ recipe["difficulty"] }}</div>
                     </div>
                 </div>
                 <!-- Save Recipe BUTTON -->
-                <div class="save-recipe-btn flex-center">
-                    Save Recipe
-                </div>
+                {% if session.user %}
+
+                    <div class="save-recipe-btn flex-center">
+                        <button type="submit"></button>
+                        {{ button_txt }}
+                    </div>
+
+                {% else %}
+
+                    <div class="save-recipe-btn flex-center">
+                        <button type="button"></button>
+                        Save Recipe
+                    </div>
+
+                {% endif %}
                 <!-- Go To MyRecipes LINK -->
-                <a href="#" class="link-my-recipes"><i class="fas fa-chevron-left"></i>Go to myRecipes</a>
-            </div>
+                <a href="{{ url_for('my_recipes') }}" class="link-my-recipes"><i class="fas fa-chevron-left"></i>Go to myRecipes</a>
+            </form>
             <!-- Recipe Image Container -->
             <div class="recipe-img-cont">
-                <img src="{{ url_for('static', filename='img/pexels-any-lane-5945747.jpg') }}" alt="">
+                <img src="{{ recipe.recipe_img }}" alt="recipe image">
             </div>
         </div>
         <!-- Bottom Section -->
@@ -57,84 +76,29 @@
                 <h5>Ingredients</h5>
                 <!-- Amount Of Persons BUTTON -->
                 <div class="amount-persons-cont flex-center">
-                    <div class="minus-btn"><i class="fas fa-minus"></i></div>
-                    <div class="amount">2 Persons</div>
-                    <div class="plus-btn"><i class="fas fa-plus"></i></div>
+                    <div onclick="changeAmountOfPersons(-1)" class="minus-btn"><i class="fas fa-minus"></i></div>
+                    <div>
+                        <span id="persons">{{ recipe.persons }}</span>
+                        Persons
+                    </div>
+                    <div onclick="changeAmountOfPersons(1)" class="plus-btn"><i class="fas fa-plus"></i></div>
                 </div>
 
-                <!-- Ingredient (unit upper, ingr. capitalized) -->
-                <div class="ingredient flex-center">
-                    <div class="ingredient-icon">
-                        <img src="{{ url_for('static', filename='img/check.png') }}" alt="Check Image">
-                    </div>
-                    <div class="amount">
-                        5 g Brown Rice
-                    </div>
-                </div>
+                {% for ingredient in recipe["ingredients"] %}
 
-                <div class="ingredient flex-center">
-                    <div class="ingredient-icon">
-                        <img src="{{ url_for('static', filename='img/check.png') }}" alt="Check Image">
-                    </div>
-                    <div class="amount">
-                        32 tbs Liquid Extasy
-                    </div>
-                </div>
-
-                <div class="ingredient flex-center">
-                    <div class="ingredient-icon">
-                        <img src="{{ url_for('static', filename='img/check.png') }}" alt="Check Image">
-                    </div>
-                    <div class="amount">
-                        7 l Hot Sauce
-                    </div>
-                </div>
-
-                <div class="ingredient flex-center">
-                    <div class="ingredient-icon">
-                        <img src="{{ url_for('static', filename='img/check.png') }}" alt="Check Image">
-                    </div>
-                    <div class="amount">
-                        5 g Brown Rice
-                    </div>
-                </div>
-
-                <div class="ingredient flex-center">
-                    <div class="ingredient-icon">
-                        <img src="{{ url_for('static', filename='img/check.png') }}" alt="Check Image">
-                    </div>
-                    <div class="amount">
-                        5 g Brown Rice
-                    </div>
-                </div>
-
-                <div class="ingredient flex-center">
-                    <div class="ingredient-icon">
-                        <img src="{{ url_for('static', filename='img/check.png') }}" alt="Check Image">
-                    </div>
-                    <div class="amount">
-                        5 g Brown Rice
-                    </div>
-                </div>
-
-                <div class="ingredient flex-center">
-                    <div class="ingredient-icon">
-                        <img src="{{ url_for('static', filename='img/check.png') }}" alt="Check Image">
-                    </div>
-                    <div class="amount">
-                        5 g Brown Rice
+                    <!-- Ingredient (unit upper, ingr. capitalized) -->
+                    <div class="ingredient flex-center">
+                        <div class="ingredient-icon">
+                            <img src="{{ url_for('static', filename='img/check.png') }}" alt="Check Image">
+                        </div>
+                        <div class="amount">
+                            <span class="amount-value">{{ ingredient["amount"] }}</span>
+                            {{ ingredient["unit"] }}
+                            {{ ingredient["ingredient"]|title }}
+                        </div>
                     </div>
 
-                </div>
-
-                <div class="ingredient flex-center">
-                    <div class="ingredient-icon">
-                        <img src="{{ url_for('static', filename='img/check.png') }}" alt="Check Image">
-                    </div>
-                    <div class="amount">
-                        5 g Brown Rice
-                    </div>
-                </div>
+                {% endfor %}
 
             </div>
 
@@ -143,48 +107,17 @@
                 <h5>Preparation</h5>
                 <div>
                     <ol>
-                        <li>
-                            <p>
-                                Lorem ipsum dolor sit amet, klos tg consectetur adipisicing elit. Consequatur
-                                consectetur
-                                ipsa optio esse fugiat ratione, ad quas deserunt minus magni.
-                            </p>
-                        </li>
-                        <li>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur consectetur ipsa
-                                optio
-                                esse fugiat ratione, ad quas deserunt minus magni.
-                            </p>
-                        </li>
-                        <li>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur consectetur ipsa
-                                optio
-                                esse fugiat ratione, ad quas deserunt minus magni.
-                            </p>
-                        </li>
-                        <li>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur consectetur ipsa
-                                optio
-                                esse fugiat ratione, ad quas deserunt minus magni.
-                            </p>
-                        </li>
-                        <li>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur consectetur ipsa
-                                optio
-                                esse fugiat ratione, ad quas deserunt minus magni.
-                            </p>
-                        </li>
-                        <li>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur consectetur ipsa
-                                optio
-                                esse fugiat ratione, ad quas deserunt minus magni.
-                            </p>
-                        </li>
+
+                        {% for step in recipe["prep_steps"] %}
+
+                            <li>
+                                <p>
+                                    {{ step["step"] }}
+                                </p>
+                            </li>
+
+                        {% endfor %} 
+
                     </ol>
                 </div>
             </div>

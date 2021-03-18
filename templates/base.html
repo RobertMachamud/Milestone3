@@ -89,6 +89,7 @@
             <!-- Mobile Navbar -->
             <div class="mobile-navbar only-visible-on-tablet">
                 <div class="logo flex-center">
+                    <a href="{{ url_for('index') }}"></a>
                     <i class="fas fa-utensils"></i>
                     RecipeShare
                 </div>
@@ -152,6 +153,21 @@
                 </div>
             </div>
         </header>
+
+        <!-- Flash messages -->
+        <div class="flash-messages-cont">
+            
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+
+                        <h4 class="flash-message">{{ message }}</h4>
+
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+
+        </div>
 
         {% block content %}
         {% endblock %}

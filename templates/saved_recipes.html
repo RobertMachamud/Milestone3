@@ -4,17 +4,17 @@
 <div class="main-cont-all-recipes">
     <!-- Top Image -->
     <div class="top-image">
-        <img src="{{ url_for('static', filename='img/tomatoes.jpg') }}" alt="image with tomatoes">
+        <img src="{{ url_for('static', filename='img/beefsteaks.jpg') }}" alt="beefsteaks with veggies">
     </div>
     <div class="filter-section container">
-        <!-- To Saved Recipes LINK -->
+        <!-- To myRecipes LINK -->
         <div class="to-saved-recipes-link">
-           <a href="{{ url_for('saved_recipes') }}">See Saved Recipes</a>
+           <a class="to-my-recipes" href="{{ url_for('my_recipes') }}">See myRecipes</a>
         </div>
         <!-- Headline For Filter/Search Section-->
         <div class="filter-headline flex-center">
             <div class="headline-line"></div>
-            <p>My Recipes</p>
+            <p>Saved Recipes</p>
             <div class="headline-line"></div>
         </div>
     </div>
@@ -22,25 +22,15 @@
     <!-- All Recipes Container -->
     <div class="all-recipes-cont container">
 
-        {% if my_recipes|length > 0 %}
+        {% if saved_recipes|length > 0 %}
 
-            {% for recipe in my_recipes %}
+            {% for recipe in saved_recipes %}
 
                 {% set rate = recipe['rating'] %}
                 {% set no_rate = 5 - recipe['rating'] %}
 
                 <div class="card recipe-card" data-category="{{ recipe['category'] }}">
                     <a href="{{ url_for('clicked_recipe', recipe_id=recipe._id) }}"></a>
-
-                    {% if session.user|lower == recipe["created_by"]|lower %}
-                        <a href="{{ url_for('delete_recipe', recipe_id=recipe._id) }}" class="delete-recipe-btn flex-center">
-                            <i class="fas fa-times"></i>
-                        </a>
-                        <a href="{{ url_for('edit_recipe', recipe_id=recipe._id) }}" class="edit-recipe-btn flex-center">
-                            <i class="fas fa-pen"></i>
-                        </a>
-                    {% endif %}
-
                     <img class="card-img-top" src="{{ recipe['recipe_img'] }}" alt="Card image cap">
                     <div class="card-body flex-column">
                         <h5 class="card-title">{{ recipe['recipe_name']|title }}</h5>
@@ -71,8 +61,8 @@
         
         {% else %}
 
-            <h3 class="to-add-recipe">No Recipes Created Yet<br>
-                <a class="to-add-recipe-link" href="{{ url_for('add_recipe') }}">Create Your First Recipe</a>
+            <h3 class="to-add-recipe">No Recipes Saved Yet<br>
+                <a class="to-add-recipe-link" href="{{ url_for('recipes') }}">Discover Some Recipes</a>
             </h3>
 
         {% endif %}

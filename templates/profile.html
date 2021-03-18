@@ -58,9 +58,9 @@
                     </div>
                     <!-- User Data -->
                     <div class="user-data-cont flex-center flex-column">
-                        <div class="user-info">Users Recipes: <span> {{ user["own_recipes"]|length }} </span></div>
+                        <div class="user-info">Users Recipes: <span> {{ user["own_recipes"] }} </span></div>
                         <div class="user-info">Saved Recipes: <span> {{ user["saved_recipes"]|length }} </span></div>
-                        <div class="user-info">Member Since: <span>21/04/2020</span></div>
+                        <div class="user-info">Member Since: <span id="member-since"></span></div>
                     </div>
                 </div>
             </div>
@@ -85,11 +85,11 @@
     <!-- Bottom Banner -->
     <div class="bottom">
         <div class="bottom-icons-cont flex-center">
-            <img src="{{ url_for('static', filename='img/award.png') }}" alt="">
-            <img src="{{ url_for('static', filename='img/sketchbook.png') }}" alt="">
-            <img src="{{ url_for('static', filename='img/search.png') }}" alt="">
-            <img src="{{ url_for('static', filename='img/recipes.png') }}" alt="">
-            <img src="{{ url_for('static', filename='img/book.png') }}" alt="">
+            <img src="{{ url_for('static', filename='img/award.png') }}" alt="award icon">
+            <img src="{{ url_for('static', filename='img/sketchbook.png') }}" alt="sketchbook icon">
+            <img src="{{ url_for('static', filename='img/search.png') }}" alt="search icon">
+            <img src="{{ url_for('static', filename='img/recipes.png') }}" alt="recipe book icon">
+            <img src="{{ url_for('static', filename='img/book.png') }}" alt="book image">
         </div>
     </div>
 </div>

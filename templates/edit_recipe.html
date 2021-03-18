@@ -5,9 +5,7 @@
 <div class="main-cont-create flex-center flex-column">
     <div class="container">
         <!-- Create Recipe Container -->
-        <!-- Wranch Icon -->
-        <div class="create-recipe-cont">
-            <i class="fas fa-wrench"></i>
+        <form method="POST" action="{{ url_for('edit_recipe', recipe_id=recipe._id) }}" class="create-recipe-cont">
             <!-- Create Recipe Steps BUTTONS Container -->
             <div class="create-steps-cont edit-recipe flex-center no-marking">
                 <div onclick="changeCreateRecipeTab(event)" class="create-step flex-center active"
@@ -24,9 +22,9 @@
                 <div class="flex-center" style="justify-content: space-between; flex-wrap: wrap">
                     <!-- Recipe Name (Input) -->
                     <div class="data-input">
-                        <input id="recipe_name" name="recipe_name" min-length="4" maxlength="25" type="text" required>
+                        <input id="edit_recipe_name" name="edit_recipe_name" value="{{ recipe.recipe_name|title }}" min-length="4" maxlength="25" type="text" required>
                         <div class="input-underline recipe-name"></div>
-                        <label for="recipe_name">RECIPE NAME</label>
+                        <label for="edit_recipe_name">RECIPE NAME</label>
                     </div>
                     <!-- Difficulty Of Recipe Container (Radios) -->
                     <div class="select-difficulty-cont">
@@ -35,8 +33,8 @@
                                 <input class="form-check-input" type="radio" name="difficulty" id="easy" value="easy" checked>
                             {% else %}
                                 <input class="form-check-input" type="radio" name="difficulty" id="easy" value="easy">
-                            <label class="form-check-label" for="easy">Easy</label>
                             {% endif %}
+                            <label class="form-check-label" for="easy">Easy</label>
                         </div>
                         <div class="form-check form-check-inline">
                             {% if recipe['difficulty'] == "medium" %}
@@ -51,6 +49,7 @@
                                 <input class="form-check-input" type="radio" name="difficulty" id="hard" value="hard" checked>
                             {% else %}
                                 <input class="form-check-input" type="radio" name="difficulty" id="hard" value="hard">
+                            {% endif %}
                             <label class="form-check-label" for="hard">
                                 Hard
                             </label>
@@ -59,71 +58,43 @@
                 </div>
                 <!-- Ingredients Container (Inputs) -->
                 <div class="ingredients-cont">
-                    <h3> <img class="headline-icon" src="clipboard.png" alt=""> Ingredients</h3>
+                    <h3> <img class="headline-icon" src="{{ url_for('static', filename='img/clipboard.png') }}" alt="clipboard icon"> Ingredients</h3>
+                    <!-- For how many Persons (Input) -->
+                    <div class="data-input amount persons">
+                            <input id="persons" name="persons" value="{{ recipe['persons'] }}" type="number" min="0" required>
+                            <div class="input-underline"></div>
+                            <label for="persons">PERSONS</label>
+                        </div>
                     <!-- Ingredients - Amount/Unit/Ingredient (Inputs) -->
-                    <div class="ingredient-inputs flex-center">
-                        <div class="data-input amount">
-                            <input id="name" name="name" type="number" required>
-                            <div class="input-underline"></div>
-                            <label for="name">AMOUNT</label>
-                        </div>
-                        <div class="data-input unit">
-                            <input id="name" name="name" min-length="1" maxlength="11" type="text" required>
-                            <div class="input-underline"></div>
-                            <label for="name">UNIT</label>
-                        </div>
-                        <div class="data-input ingredient">
-                            <input id="name" name="name" min-length="4" maxlength="25" type="text" required>
-                            <div class="input-underline"></div>
-                            <label for="name">INGREDIENT</label>
-                        </div>
-                        <button onclick="removeIngredient(event)" class="remove-ingredient-btn">
-                            <i class="fas fa-times"></i>
-                        </button>
-                    </div>
-                    <div class="ingredient-inputs flex-center">
-                        <div class="data-input amount">
-                            <input id="name" name="name" type="number" required>
-                            <div class="input-underline"></div>
-                            <label for="name">AMOUNT</label>
-                        </div>
-                        <div class="data-input unit">
-                            <input id="name" name="name" min-length="1" maxlength="11" type="text" required>
-                            <div class="input-underline"></div>
-                            <label for="name">UNIT</label>
-                        </div>
-                        <div class="data-input ingredient">
-                            <input id="name" name="name" min-length="4" maxlength="25" type="text" required>
-                            <div class="input-underline"></div>
-                            <label for="name">INGREDIENT</label>
-                        </div>
-                        <button onclick="removeIngredient(event)" class="remove-ingredient-btn">
-                            <i class="fas fa-times"></i>
-                        </button>
-                    </div>
-                    <div class="ingredient-inputs flex-center">
-                        <div class="data-input amount">
-                            <input id="name" name="name" type="number" required>
-                            <div class="input-underline"></div>
-                            <label for="name">AMOUNT</label>
-                        </div>
-                        <div class="data-input unit">
-                            <input id="name" name="name" min-length="1" maxlength="11" type="text" required>
-                            <div class="input-underline"></div>
-                            <label for="name">UNIT</label>
-                        </div>
-                        <div class="data-input ingredient">
-                            <input id="name" name="name" min-length="4" maxlength="25" type="text" required>
-                            <div class="input-underline"></div>
-                            <label for="name">INGREDIENT</label>
-                        </div>
-                        <button onclick="removeIngredient(event)" class="remove-ingredient-btn">
-                            <i class="fas fa-times"></i>
-                        </button>
-                    </div>
+
+                        {% for ingr in recipe.ingredients  %}
+
+                            <div class="ingredient-inputs flex-center">
+                                <div class="data-input amount">
+                                    <input name="recipe_amount_{{ loop.index }}" value="{{ ingr.amount }}" type="number" min="0"  step="0.5">
+                                    <div class="input-underline"></div>
+                                    <label for="recipe_amount">AMOUNT</label>
+                                </div>
+                                <div class="data-input unit">
+                                    <input name="recipe_unit_{{ loop.index }}" value="{{ ingr.unit|lower }}" min-length="1" maxlength="11" type="text">
+                                    <div class="input-underline"></div>
+                                    <label for="recipe_unit">UNIT</label>
+                                </div>
+                                <div class="data-input ingredient">
+                                    <input name="recipe_ingredient_{{ loop.index }}" value="{{ ingr.ingredient|title }}" min-length="4" maxlength="25" type="text">
+                                    <div class="input-underline"></div>
+                                    <label for="recipe_ingredient">INGREDIENT</label>
+                                </div>
+                                <button type="button" onclick="removeIngredient(event)" class="remove-ingredient-btn">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+
+                        {% endfor %}
+                        
                 </div>
                 <!-- Add Three More Ingredients Inputs - BUTTON -->
-                <button onclick="addThreeIngredientInputs()" class="add-ingredients-input-btn">
+                <button type="button" onclick="addThreeIngredientInputs()" class="add-ingredients-input-btn">
                     <i class="fas fa-plus"></i>
                 </button>
             </div>
@@ -132,19 +103,19 @@
                 <!-- Duration -->
                 <div class="duration-cont flex-center">
                     <div class="duration-icon">
-                        <img src="sand-clock.png" alt="">
+                        <img src="{{ url_for('static', filename='img/sand-clock.png') }}" alt="sand clock icon">
                     </div>
                     <!-- Hours (Input) -->
                     <div class="data-input">
-                        <input id="name" name="name" type="number" min="0">
+                        <input id="edit_duration_h" name="edit_duration_h" value="{{ recipe.duration_h }}" type="number" min="0">
                         <div class="input-underline"></div>
-                        <label for="name">HOURS</label>
+                        <label for="edit_duration_h">HOURS</label>
                     </div>
                     <!-- Minutes (Input) -->
                     <div class="data-input">
-                        <input id="name" name="name" type="number" max="60" required>
+                        <input id="edit_duration_min" name="edit_duration_min" value="{{ recipe.duration_min }}" type="number" max="60" required>
                         <div class="input-underline"></div>
-                        <label for="name">MINUTES</label>
+                        <label for="edit_duration_min">MINUTES</label>
                     </div>
                 </div>
                 <p>
@@ -153,46 +124,27 @@
                     Backofens und dass alle von dir aufgeführten Zutaten enthalten sind.
                 </p>
                 <div class="preparation-icon flex-center">
-                    <img src="whisk-and-bowl.png" alt="">
+                    <img src="{{ url_for('static', filename='img/whisk-and-bowl.png') }}" alt="food bowl icon">
                     <h3>Preparation Step By Step</h3>
                 </div>
                 <!-- Preparation Container (Textareas) -->
                 <div class="preparation flex-center">
-                    <div class="form-group preparation-txtarea">
-                        <button onclick="removePreparationStep(event)" class="delete-preparation-txtarea-btn">
-                            <i class="fas fa-times"></i>
-                        </button>
-                        <label class="about-label" for="about">PREPARATION STEP</label><br>
-                        <textarea id="about" name="about" class="about-txt-area" class="form-control" rows="3"
-                            maxlength="250"></textarea>
-                    </div>
-                    <div class="form-group preparation-txtarea">
-                        <button onclick="removePreparationStep(event)" class="delete-preparation-txtarea-btn">
-                            <i class="fas fa-times"></i>
-                        </button>
-                        <label class="about-label" for="about">PREPARATION STEP</label><br>
-                        <textarea id="about" name="about" class="about-txt-area" class="form-control" rows="3"
-                            maxlength="250"></textarea>
-                    </div>
-                    <div class="form-group preparation-txtarea">
-                        <button onclick="removePreparationStep(event)" class="delete-preparation-txtarea-btn">
-                            <i class="fas fa-times"></i>
-                        </button>
-                        <label class="about-label" for="about">PREPARATION STEP</label><br>
-                        <textarea id="about" name="about" class="about-txt-area" class="form-control" rows="3"
-                            maxlength="250"></textarea>
-                    </div>
-                    <div class="form-group preparation-txtarea">
-                        <button onclick="removePreparationStep(event)" class="delete-preparation-txtarea-btn">
-                            <i class="fas fa-times"></i>
-                        </button>
-                        <label class="about-label" for="about">PREPARATION STEP</label><br>
-                        <textarea id="about" name="about" class="about-txt-area" class="form-control" rows="3"
-                            maxlength="250"></textarea>
-                    </div>
+                    
+                    {% for prep in recipe.prep_steps %}
+
+                        <div class="form-group preparation-txtarea">
+                            <button type="button" onclick="removePreparationStep(event)" class="delete-preparation-txtarea-btn">
+                                <i class="fas fa-times"></i>
+                            </button>
+                            <label class="about-label prep-label" for="prep_step_{{ loop.index + 1 }}">PREPARATION STEP {{ loop.index + 1 }}</label><br>
+                            <textarea name="prep_step_{{ loop.index + 1 }}" class="about-txt-area prep-step form-control" rows="3" maxlength="250">{{ prep.step }}</textarea>
+                        </div>
+
+                    {% endfor %}
+
                 </div>
                 <!-- Add Two More Preparatino Steps Textareas - BUTTON -->
-                <button onclick="addTwoPreparatrionTxtareas()"
+                <button type="button" onclick="addTwoPreparatrionTxtareas()"
                     class="add-ingredients-input-btn add-preparation-txt-area-btn">
                     <i class="fas fa-plus"></i>
                 </button>
@@ -201,31 +153,40 @@
             <div class="categories-section create-section hidden">
                 <div class="flex-center" style="justify-content: space-between; width: 100%;">
                     <!-- Select Categoie -->
-                    <select class="form-select form-select-lg mb-3 select-category"
+                    <select name="category" class="form-select form-select-lg mb-3 select-category"
                         aria-label=".form-select-lg example">
-                        <option selected>Select a category for your recipe</option>
                         
                         {% for category in categories %}
 
-                            <option>{{ category.category_name|capitalize }}</option>
+                            {% if category.category_name|lower == recipe.category|lower  %}
+
+                                <option value="{{ category.category_name }}" selected>{{ category.category_name|capitalize }}</option>
+
+                            {% else %}
+
+                                <option value="{{ category.category_name }}">{{ category.category_name|capitalize }}</option>
+
+                            {% endif %}
 
                         {% endfor %}
 
                     </select>
-                    <h3><img class="headline-icon" src="food.png" alt=""> Category For Your Recipe</h3>
+                    <h3><img class="headline-icon" src="{{ url_for('static', filename='img/food.png') }}" alt="basket with food icon"> Category For Your Recipe</h3>
                 </div>
             </div>
             <!-- Recipe Image and Submit Seciton -->
             <div class="recipe-image-section create-section hidden">
+                <div id="recipe-img-cont" class="data-input">
+                    <input id="recipe_img" name="recipe_img" minlength="2" type="text" value="{{ recipe.recipe_img }}" required>
+                    <div class="input-underline"></div>
+                    <label for="recipe_img">RECIPE IMAGE</label>
+                </div>
+
                 <!-- Drag & Drop for Images Container -->
                 <div id="dropFileForm">
-                    <input type="file" name="files[]" id="fileInput" multiple onchange="addFiles(event)">
+                    <input type="file" name="recipe_drag_img" id="recipe_drag_img" multiple onchange="addFiles(event)">
                     <!--  Label for Drag & Drop Cont -->
-                    <label for="fileInput" id="fileLabel" class="edit-recipe-label"
-                        ondragover="overrideDefault(event);fileHover();"
-                        ondragenter="overrideDefault(event);fileHover();"
-                        ondragleave="overrideDefault(event);fileHoverEnd();" ondrop="overrideDefault(event);fileHoverEnd();
-        addFiles(event);">
+                    <label for="recipe_drag_img" id="fileLabel" class="edit-recipe-label" ondragover="overrideDefault(event);fileHover();" ondragenter="overrideDefault(event);fileHover();" ondragleave="overrideDefault(event);fileHoverEnd();" ondrop="overrideDefault(event);fileHoverEnd(); addFiles(event);">
                         <!-- Icon -->
                         <i class="fa fa-download fa-5x"></i>
                         <br>
@@ -236,13 +197,13 @@
                         <br>
                     </label>
                     <!-- Submit Form BUTTON -->
-                    <button type="submit" class="uploadButton edit-recipe-btn">
+                <button onclick="beforeSubmitRecipe()" type="submit" class="uploadButton edit-recipe-btn">
                         <i class="fas fa-check" style="margin-right: 3px"></i>
-                        Upload Your Recipe
+                        Update Your Recipe
                     </button>
                 </div>
             </div>
-        </div>
+        </form>
     </div>
 </div>
 

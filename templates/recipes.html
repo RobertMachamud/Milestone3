@@ -5,7 +5,7 @@
 <div class="main-cont-all-recipes">
     <!-- Top Image -->
     <div class="top-image">
-        <img src="{{ url_for('static', filename='img/topimage.jpg') }}" alt="">
+        <img src="{{ url_for('static', filename='img/topimage.jpg') }}" alt="hand preparing peanut bananas">
     </div>
     <!-- Filter (by Category) and Search Section -->
     <div class="filter-section container">
@@ -41,7 +41,7 @@
         <form method="POST" action="{{ url_for('search') }}" class="search-cont flex-center">
             <div class="search">
                 <button type="submit" class="search-btn">
-                    <img src="{{ url_for('static', filename='img/loupe.png') }}" alt="">
+                    <img src="{{ url_for('static', filename='img/loupe.png') }}" alt="loupe icon">
                 </button>
                 <input id="query" name="query" type="text" minlength="1" required>
                 <label for="query" class="hidden"></label>
@@ -67,16 +67,17 @@
         {% set no_rate = 5 - recipe['rating'] %}
 
         <div class="card recipe-card" data-category="{{ recipe['category'] }}">
-            <img class="card-img-top" src="{{ url_for('static', filename='img/pexels-any-lane-5945747.jpg') }}" alt="Card image cap">
+            <a href="{{ url_for('clicked_recipe', recipe_id=recipe._id) }}"></a>
+            <img class="card-img-top" src="{{ recipe['recipe_img'] }}" alt="Card image cap">
             <div class="card-body flex-column">
                 <h5 class="card-title">{{ recipe['recipe_name']|title }}</h5>
                 <div class="card-infos flex-center">
                     <div class="card-rating flex-center">
                         {% for rating in range(rate) %}
-                            <img src="{{ url_for('static', filename='img/chef.png') }}" alt="">
+                            <img src="{{ url_for('static', filename='img/chef.png') }}" alt="chef hat icon">
                         {% endfor %}
                         {% for no_rating in range (no_rate) %}
-                            <img src="{{ url_for('static', filename='img/chefgray.png') }}" alt="">
+                            <img src="{{ url_for('static', filename='img/chefgray.png') }}" alt="gray chef hat icon">
                         {% endfor %}
                     </div>
 
@@ -95,25 +96,5 @@
 
     </div>
 </div>
-
-<!-- <script>
-
-    const hiddenTags = document.querySelector(".hidden-tags-cont");
-    const hiddenCategories = document.querySelector(".categories-cont.hidden-categories-cont");
-    
-    
-    const toggleHiddenCat = () => {
-        hiddenCategories.classList.toggle("hidden");
-    }
-    
-    
-    const toggleHiddenTag = () => {
-        hiddenTags.classList.toggle("hidden");
-    }
-    
-    
-    // wide screen - width ca 80% of category cont -- maybe whole cont (lines etc)
-    
-</script> -->
 
 {% endblock %}

@@ -38,7 +38,7 @@
       2. As a returning visitor, I want to post an other awesome recipe I've discovered.
       3. As a returning visitor, I want to easily reread all the information I want/need.
       4. As a returning visitor, I want to (eventually) improve or remove some of my own recipes.
-      5. As a returning visitor, I want to increase my "own-recipe-score" on my profile page.
+      5. As a returning visitor, I want to save some recipes I like to review them when needed.
       6. As a returning visitor, I want to (eventually) edit my profile.
       7. As a returning visitor, I might want to rethink my decision if I didn't follow/subscribed to the website on social media :-) 
 
@@ -64,8 +64,8 @@
     - The - Helvetica Neue - is the font family of the blog with Arial and Sans Serif as the fallback fonts in case for any reason the font isn't being imported into the site correctly. Helvetica Neue is the default font when using bootstrap. It is frequently used and recognizable and looks clean and appropriate.
 
   - Imagery
-    - Immages are mostly used for recipes but also as a title image
-    - PNGs are used for keeping the disign minimaliskic as possible without using unnecessary space (i.e. plates) or as icons/vectors (similar effect as font awesome icons)
+    - Images are mostly used for recipes but also as a title image
+    - PNGs are used for keeping the disign minimalistic as possible without using unnecessary space (i.e. plates) or as icons/vectors (similar effect as font awesome icons)
 
 
 - Wireframes
@@ -116,11 +116,9 @@
     - Autoprefixer was used to make sure that no prefixes are missing.
 8. <a href="https://www.freeformatter.com/html-formatter.html#ad-output">Freeformatter:</a> 
     - Freeformatter was used for testing the HTML-format.
-9. <a href="http://scrollmagic.io/">Scroll Magic:</a> 
-    - Scroll Magic was used to make content appear while scrolling.
-10. <a href="https://jquery.com/">Jquery:</a> 
+9. <a href="https://jquery.com/">Jquery:</a> 
     - JQuery was used a bit to get elements easier.
-11. - <a href="https://flask.palletsprojects.com/en/1.1.x/">Flask:</a> 
+10. - <a href="https://flask.palletsprojects.com/en/1.1.x/">Flask:</a> 
     - Flask was used to avoid repitition and to make coding easier and cleaner.
 
 
@@ -273,8 +271,7 @@ Click <a href="https://help.github.com/en/github/creating-cloning-and-archiving-
 
 ## Content
   - All content was written by the developer - except:
-    - The JS code for the picture slider (only the part of the function that slides the images) in/on the About Us section/page from Youtube - <a href="https://www.youtube.com/watch?v=4YQ4svkETS0&t=213s">Link Here</a>
-  - Psychological properties of colours text in the README.md was found <a href="http://www.colour-affects.co.uk/psychological-properties-of-colours">here</a> (e.g. red - strength, purple - luxury, etc.)
+    - Drag and Drop Image uploader from Youtube - <a href="https://www.youtube.com/watch?v=uLr7yjg3EuQ">Link Here</a>
 
 ## Media
   - Images downloaded from <a href="https://www.pexels.com/">Pexels</a>
@@ -285,12 +282,14 @@ Click <a href="https://help.github.com/en/github/creating-cloning-and-archiving-
 
 
 ## Acknowledgements
-  - My Mentor for his help (tips, links, etc.) and his great energy! 😎
+  - Michael From Tutor Support for his awesome help and many hours of working with me without making it easy 😎
+  - My Mentor for his help (tips, links, etc.) and his great energy! 
   - Tutor support at Code Institute for their support.
 
 
 ## Note
-  - I know I could have used Bootstrap for better responsiveness but I intentionally chose to use css to learn more 
+  - I know I could have used Bootstrap or Materialize for better (and easier) responsiveness but I intentionally chose to use mostly plain css to get more comfortable with it and to improve my skills by beeing forced to improvise, use diffent (and newly learned) skills etc. 
+  In this project I tried to understand css combinators and to use them a lot.
 
 
 

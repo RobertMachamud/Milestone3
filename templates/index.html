@@ -28,11 +28,25 @@
                     <a href="{{ url_for('recipes') }}"></a>
                     See Recipes
                 </button>
-                <div class="to-profile">
-                    <a href="{{ url_for('profile', username=session['user']) }}" class="arrow-link">
-                        profile <i class="fas fa-angle-right"></i>
-                    </a>
-                </div>
+
+                {% if session.user %}
+
+                    <div class="to-profile">
+                        <a href="{{ url_for('profile', username=session['user']) }}" class="arrow-link">
+                            profile <i class="fas fa-angle-right"></i>
+                        </a>
+                    </div>
+
+                {% else %}
+
+                    <div class="to-profile">
+                        <a href="{{ url_for('login') }}" class="arrow-link">
+                            sign in <i class="fas fa-angle-right"></i>
+                        </a>
+                    </div>
+                    
+                {% endif %}
+
             </div>
             <!-- Social Media Icons -->
             <div class="social-icons flex-center">

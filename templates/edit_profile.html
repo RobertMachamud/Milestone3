@@ -41,15 +41,27 @@
                 <!-- Cooking Level (Radio Input) -->
                 <div class="level-radios-cont d-flex justify-content-center" style="margin: -.5em 0 -1.5em 0">
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="edit_level" id="edit_beginner" value="beginner" checked>
+                        {% if user['level'] == "beginner" %}
+                            <input class="form-check-input" type="radio" name="edit_level" id="edit_beginner" value="beginner" checked>
+                        {% else %}
+                            <input class="form-check-input" type="radio" name="edit_level" id="edit_beginner" value="beginner">
+                        {% endif %}
                         <label class="form-check-label" for="edit_beginner">Beginner</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="edit_level" id="edit_advanced" value="advanced">
+                        {% if user['level'] == "advanced" %}
+                            <input class="form-check-input" type="radio" name="edit_level" id="edit_advanced" value="advanced" checked>
+                        {% else %}
+                            <input class="form-check-input" type="radio" name="edit_level" id="edit_advanced" value="advanced">
+                        {% endif %}
                         <label class="form-check-label" for="edit_advanced">Advanced</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="edit_level" id="edit_professional" value="professional">
+                        {% if user['level'] == "professional" %}
+                            <input class="form-check-input" type="radio" name="edit_level" id="edit_professional" value="professional" checked>
+                        {% else %}
+                            <input class="form-check-input" type="radio" name="edit_level" id="edit_professional" value="professional">
+                        {% endif %}
                         <label class="form-check-label" for="edit_professional">
                             Professional
                         </label>
@@ -60,13 +72,6 @@
                     <input id="edit_dob" name="edit_dob" type="date" value="{{ user.dob }}" required>
                     <div class="input-underline"></div>
                     <label for="edit_dob">DATE OF BIRTH</label>
-                </div>
-                <!-- Profile Image (Input) -->
-                <div class="data-input">
-                    <div class="input-underline"></div>
-                    <label for="edit_img">SELECT IMAGE</label>
-                    <input type="file" id="edit__img" name="edit__img" accept="image/*">
-                    <div class="img-icon"><i class="fas fa-camera"></i></div>
                 </div>
                 <!-- About User (Textarea) -->
                 <div class="form-group" style="margin: -1em auto 2em auto; width: 80%;">
