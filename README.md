@@ -49,6 +49,9 @@
       5. As a frequent user, I want to improve or remove my own recipes.
       6. As a frequent user, I want to be able to change my profile data if - for example my email adress changes or I don't like my username anymore...etc.
  
+  - Administrator
+    1. As an administrator I want to be able to read, add, edit or delete food categories
+
 
 - Design
   
