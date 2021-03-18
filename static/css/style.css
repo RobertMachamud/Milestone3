@@ -3051,6 +3051,12 @@ input[type="date"]
     transition: .2s ease-in;
 }
 
+/* NO HOVER For Save Recipe Btn */
+.save-recipe-btn.no-hover
+{
+    pointer-events: none;
+}
+
 /* HOVER - Save Recipe Btn */
 .save-recipe-btn:hover
 {

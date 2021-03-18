@@ -155,13 +155,16 @@ def search():
 
 @app.route("/clicked-recipe/<recipe_id>")
 def clicked_recipe(recipe_id):
-    user = mongo.db.users.find_one(
-        {"username": session["user"]}
-    )
-    if recipe_id not in user["saved_recipes"]:
-        button_txt = "Save Recipe"
+    if "user" in session:
+        user = mongo.db.users.find_one(
+            {"username": session["user"]}
+        )
+        if recipe_id not in user["saved_recipes"]:
+            button_txt = "Save Recipe"
+        else:
+            button_txt = "Unsave Recipe"
     else:
-        button_txt = "Unsave Recipe"
+        button_txt = "Save Recipe"
 
     recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
     return render_template(

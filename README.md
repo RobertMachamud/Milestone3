@@ -7,14 +7,14 @@
   
 
 <p align="center">
-  <a href="">
+  <a href="http://recipe-share-milestone.herokuapp.com/">
    View the live project here
   </a>
   <br>
 </p>
 
 <p align="center">
-  <img width="600" src="">
+  <img width="600" src="https://res.cloudinary.com/dxcrd5sos/image/upload/v1616030877/pexels-marko-klaric-6408290_upybyd.jpg">
 </p>
 
 # 
